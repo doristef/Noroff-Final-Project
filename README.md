@@ -28,7 +28,7 @@ The project can now be opened in your browser at localhost:8080/
 ## Server Side
 ```
 This project makes use of PHP.
-PHP code from : https://github.com/Noroff-Education/project-exam-2
+PHP code is available at https://github.com/Noroff-Education/project-exam-2
 ```
 
 ### Compiles and minifies for production
