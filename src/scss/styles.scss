@@ -45,13 +45,36 @@ h1, h2, h3, h4, h5, h6 {
 
     &-brand {
         display: inline;
-        font-family: 'Cookie', cursive;
-        color: $quiteWhite;
-        font-size: 3rem;
+        @media only screen and (max-device-width: $medScreen){
+            display: inline-block;
+            max-height: $navHeight;
+        }
+        position: relative;
         margin: 0 0 0 15px;
         padding: 0 12px;
+        border-radius: 4px;
+        cursor: pointer;
         &:hover {
             background-color: $accentColor;
+        }
+        &-text {
+            font-family: 'Cookie', cursive !important;
+            color: $quiteWhite !important;
+            font-size: 3rem !important;
+            &:hover {
+                text-decoration: none !important;
+            }
+        }
+        &-active {
+            &::after {
+                position: absolute;
+                width: 90%;
+                height: 2px;
+                bottom: 10px;
+                left: 5%;
+                content: '';
+                background-color: $accentColor !important;
+            }
         }
     }
 
@@ -148,20 +171,39 @@ h1, h2, h3, h4, h5, h6 {
 ************************************************/
 
 .navigation {
-    & ul {
+    &-list {
         padding: 0;
         margin: 0;
         list-style: none;
-        
     }
+
     &-link {
         font-family: 'Montserrat', sans-serif;
         font-size: 1.2rem;
         color: $quiteWhite !important;
+        position: relative;
 
         &:hover {
             text-decoration: none !important;
             color: lighten($quiteWhite, 10%) !important;
+        }
+
+        &-active {
+            & ::after {
+                position: absolute;
+                width: 90%;
+                height: 2px;
+                bottom: 10px;
+                left: 5%;
+                content: '';
+                background-color: $accentColor;
+                @media only screen and (max-device-width: $medScreen){
+                    height: 1px;
+                    left: 4%;
+                    width: 70%;
+                    max-width: 200px;
+                }
+            }
         }
     }
 
@@ -171,12 +213,13 @@ h1, h2, h3, h4, h5, h6 {
             padding: 0;
     
             &-list-item {
+                position: relative;
                 margin: 0 0 0 3rem;
                 padding: 0 10px;
                 display: inline-block;
                 line-height: ($navHeight + 10) !important;
                 vertical-align: middle;
-                border-radius: 5px;
+                border-radius: 4px;
     
                 &:hover {
                     background-color: $accentColor;
@@ -199,10 +242,11 @@ h1, h2, h3, h4, h5, h6 {
             top: $navHeight;
 
             &-list-item {
+                position: relative;
                 padding: 15px 25px;
                 height: 55px;
                 width: 100%;
-
+                
                 &:hover {
                     background-color: $accentColor;
                     text-decoration: none;

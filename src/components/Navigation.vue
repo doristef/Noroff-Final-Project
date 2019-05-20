@@ -2,7 +2,13 @@
   <div class="[ navigation-container ]">
     <div class="nav">
       <div class="nav-brand">
-        Holidaze
+        <router-link
+          to="/home"
+          class="nav-brand-text"
+          active-class="nav-brand-active"
+        >
+          Holidaze
+        </router-link>
       </div>
       <div class="nav-hamburger" @click="navClick()">
         <div
@@ -23,13 +29,24 @@
         class="navigation"
         :class="[clicked ? 'navigation-show' : 'navigation-hide']"
       >
-        <ul>
-          <a href="#" class="navigation-link"
-            ><li class="navigation-list-item">Accomodations</li></a
+        <ul class="navigation-list">
+          <router-link
+            to="/accomodations"
+            class="navigation-link"
+            active-class="navigation-link-active"
+            
           >
-          <a href="#" class="navigation-link"
-            ><li class="navigation-list-item">Contact Us</li></a
+            <li class="navigation-list-item" @click="navClick()">Accomodations</li>
+          </router-link>
+
+          <router-link
+            to="/contact"
+            class="navigation-link"
+            active-class="navigation-link-active"
+            
           >
+            <li class="navigation-list-item" @click="navClick()">Contact Us</li>
+          </router-link>
         </ul>
       </div>
     </div>
