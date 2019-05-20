@@ -6,10 +6,15 @@
 ---
 
 Please make sure you have git installed along with node, and is up to date.
+
 Clone the project to your machine, 
+
 CD into the folder and run " npm i " to install the dependecies.
+
 Run the project by running " npm run serve ". 
+
 The project can now be opened in your browser at localhost:8080/
+
 
 ## Usage
 ```
