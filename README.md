@@ -2,7 +2,7 @@
 
 =============================================================================
 
-Installation
+##Installation
 ---
 
 Please make sure you have git installed along with node, and is up to date.
@@ -11,8 +11,8 @@ CD into the folder and run " npm i " to install the dependecies.
 Run the project by running " npm run serve ". 
 The project can now be opened in your browser at localhost:8080/
 
-```
 ## Usage
+```
 
  1. git clone https://github.com/doristef/Noroff-FinalProject
  
@@ -54,5 +54,6 @@ Live
 ---
 
 A live version is available at http://doristef.me/semester4/final-project/
+
 
 ### Thanks and have fun!
