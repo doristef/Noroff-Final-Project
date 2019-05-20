@@ -1,7 +1,7 @@
 <template>
   <div class="[ navigation-container ]">
     <div class="nav">
-      <div class="nav-brand">
+      <div class="nav-brand" @click="clicked ? navClick() : ''">
         <router-link
           to="/home"
           class="nav-brand-text"
@@ -34,16 +34,16 @@
             to="/accomodations"
             class="navigation-link"
             active-class="navigation-link-active"
-            
           >
-            <li class="navigation-list-item" @click="navClick()">Accomodations</li>
+            <li class="navigation-list-item" @click="navClick()">
+              Accomodations
+            </li>
           </router-link>
 
           <router-link
             to="/contact"
             class="navigation-link"
             active-class="navigation-link-active"
-            
           >
             <li class="navigation-list-item" @click="navClick()">Contact Us</li>
           </router-link>

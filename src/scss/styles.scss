@@ -69,11 +69,11 @@ h1, h2, h3, h4, h5, h6 {
             &::after {
                 position: absolute;
                 width: 90%;
-                height: 2px;
+                height: 1px;
                 bottom: 10px;
                 left: 5%;
                 content: '';
-                background-color: $accentColor !important;
+                background-color: $quiteWhite !important;
             }
         }
     }
@@ -192,16 +192,14 @@ h1, h2, h3, h4, h5, h6 {
             & ::after {
                 position: absolute;
                 width: 90%;
-                height: 2px;
+                height: 1px;
                 bottom: 10px;
                 left: 5%;
                 content: '';
-                background-color: $accentColor;
+                background-color: $quiteWhite;
                 @media only screen and (max-device-width: $medScreen){
-                    height: 1px;
-                    left: 4%;
-                    width: 70%;
-                    max-width: 200px;
+                    max-width: 220px;
+                    background-color: $accentColor;
                 }
             }
         }
