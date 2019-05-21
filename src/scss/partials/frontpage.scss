@@ -1,0 +1,13 @@
+.frontpage {
+    &-h1 {
+        font-family: 'Cookie', cursive !important;
+        color: $accentColor !important;
+        font-size: 3rem !important;
+    }
+    &-icons {
+        border-top: 2px solid $mainColor;
+        border-bottom: 2px solid $mainColor;
+        min-height: 200px;
+        margin: 5rem 0 3rem 0;
+    }
+}

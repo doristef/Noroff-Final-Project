@@ -1,0 +1,23 @@
+.footer {
+    color: $quiteWhite !important;
+    background-color: $mainColor !important;
+
+    &-icon {
+        background-image: url('../assets/logo.png');
+        background-position: center center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+        height: 150px;
+        width: 150px;
+        margin: 0 auto 2rem auto;
+        /* Hide the text. */
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    &-copyright {
+        color: $lighterGray !important;
+
+    }
+}

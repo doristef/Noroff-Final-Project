@@ -16,6 +16,15 @@
 
 /* nav-Container */
     &-container {
+        /* For smooth hide/show navigation bar */
+        transform: translate3d(0, 0, 0);
+        transition: transform 0.45s cubic-bezier(0.77,0.2,0.05,1.0);
+    
+        &-hide {
+            transform: translate3d(0, -120%, 0);
+            transition: transform 0.45s cubic-bezier(0.77,0.2,0.05,1.0);
+        }
+        /* // hide/show navigation bar */
         z-index: 99 !important;
         position: fixed; // Stuck at top!
         top: 0;

@@ -1,5 +1,5 @@
 <template>
-  <div class="[ container-fluid ][ header ]">
+  <b-container fluid class="[ header ]">
     <b-container class="[ vh100 ]">
       <!--- SEARCH --->
       <b-row class="[ vh100 ][ justify-content-center ]" align-v="center">
@@ -8,13 +8,11 @@
             <b-form-group
               id="search"
               label-for="search"
-              :formatter="format"
               aria-describedby="search-helper"
               class="[ mb-0 ]"
             >
               <b-form-input
-                id="searchArticles"
-                v-model="articleSearch"
+                id="search"
                 type="text"
                 size="lg"
                 placeholder="Search"
@@ -37,14 +35,13 @@
         </b-col>
       </b-row>
       <!--- SEARCH END --->
-    </b-container>
-  </div>
-  <!-- container -->
+    </b-container> </b-container
+  ><!-- container -->
 </template>
 
 <script>
 export default {
-  name: "header",
+  name: "pageHeader",
   data: () => ({}),
   methods: {}
 };

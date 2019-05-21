@@ -1,18 +1,24 @@
 <template>
   <div id="app">
     <Navigation :navigation="this.navigation" :hideNavbar="this.hideNavbar" />
-    <Header />
+    <PageHeader />
+    <Frontpage />
+    <PageFooter />
   </div>
 </template>
 <script>
 import Navigation from "./components/Navigation.vue";
-import Header from "./components/Header.vue";
+import PageHeader from "./components/Header.vue";
+import Frontpage from "./components/Frontpage.vue";
+import PageFooter from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
     Navigation,
-    Header
+    PageHeader,
+    Frontpage,
+    PageFooter
   },
   data() {
     return {
@@ -29,12 +35,9 @@ export default {
 
   methods: {
     onScroll() {
-      var sh = document.body.scrollHeight;
-      var st = document.body.scrollTop;
-      var oh = document.body.offsetHeight;
-
-      var currentScrollPosition = sh - st - oh + 1;
-
+      var sy = window.scrollY;
+      var ih = window.innerHeight;
+      var currentScrollPosition = sy + ih;
       if (currentScrollPosition < 0) {
         return;
       }
@@ -42,15 +45,15 @@ export default {
         return;
       }
 
-      this.hideNavbar = currentScrollPosition < this.lastScrollPosition;
+      this.hideNavbar = currentScrollPosition > this.lastScrollPosition;
       this.lastScrollPosition = currentScrollPosition;
     } // onScroll
   },
   mounted() {
-    document.body.addEventListener("scroll", this.onScroll);
+    window.addEventListener("scroll", this.onScroll);
   },
   beforeDestroy() {
-    document.body.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("scroll", this.onScroll);
   }
 };
 </script>

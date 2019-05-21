@@ -1,5 +1,5 @@
 <template>
-  <div class="[ nav-container ]">
+  <div class="[ nav-container ]" :class="{ 'nav-container-hide': hideNavbar }">
     <div class="[ nav ]">
       <div class="[ nav-brand ]" @click="clicked ? navClick() : ''">
         <router-link
