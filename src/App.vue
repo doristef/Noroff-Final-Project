@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <Navigation :navigation="this.navigation" :hideNavbar="this.hideNavbar" />
+    <Header />
   </div>
 </template>
 <script>
 import Navigation from "./components/Navigation.vue";
+import Header from "./components/Header.vue";
 
 export default {
   name: "app",
   components: {
-    Navigation
+    Navigation,
+    Header
   },
   data() {
     return {
