@@ -2,8 +2,14 @@
     color: $quiteWhite !important;
     background-color: $mainColor !important;
 
+    &-h1 {
+        font-family: 'Cookie', cursive !important;
+        color: $quiteWhite !important;
+        font-size: 4rem !important;
+    }
+
     &-icon {
-        background-image: url('../assets/logo.png');
+        background-image: url('../assets/logo_white.png');
         background-position: center center; /* Center the image */
         background-repeat: no-repeat; /* Do not repeat the image */
         background-size: cover; /* Resize the background image to cover the entire container */
@@ -17,7 +23,7 @@
     }
 
     &-copyright {
-        color: $lighterGray !important;
+        color: $quiteWhite !important;
 
     }
 }

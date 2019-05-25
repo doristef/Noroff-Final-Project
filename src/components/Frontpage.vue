@@ -1,12 +1,8 @@
 <template>
   <b-container fluid>
     <!--- Holidaze --->
-    <b-row
-      class="[ justify-content-center ][ my-5 ]"
-      align-v="center"
-      align-h="around"
-    >
-      <b-col align-self="center" col cols="12" lg="5">
+    <b-row class="[ my-5 ]" align-h="around">
+      <b-col col cols="12" lg="5">
         <b-container>
           <h1 class="[ frontpage-h1 ]">Holidaze</h1>
 

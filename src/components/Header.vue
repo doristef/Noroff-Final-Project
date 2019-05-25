@@ -16,14 +16,33 @@
                 type="text"
                 size="lg"
                 placeholder="Search"
+                v-model="search"
+                autocomplete="off"
+                list="autocomplete"
+                tabindex="1"
               />
+              <datalist
+                id="autocomplete"
+                class="[ form-control ][ search-dropdown ]"
+                v-if="search && filteredSearch.length"
+              >
+                <option
+                  tabindex="2"
+                  class="[ search-dropdown-item ]"
+                  v-for="(item, i) in filteredSearch"
+                  :key="i"
+                >
+                  <router-link :to="'/accomodations/' + item.id"
+                    >{{ item.establishmentName }}
+                  </router-link>
+                </option>
+              </datalist>
               <b-form-text id="search-helper" class="[ search-helper ]">
                 Example: Bergen, Norway
               </b-form-text>
             </b-form-group>
             <div class="[ search-button ]">
               <b-button
-                pill
                 size="lg"
                 type="submit"
                 variant="primary"
@@ -42,7 +61,22 @@
 <script>
 export default {
   name: "pageHeader",
-  data: () => ({}),
-  methods: {}
+  props: ["establishments"],
+  data() {
+    return {
+      search: ""
+    };
+  },
+  computed: {
+    filteredSearch() {
+      return this.establishments.filter(
+        function(item) {
+          return item.establishmentName
+            .toLowerCase()
+            .match(this.search.toLowerCase());
+        }.bind(this)
+      );
+    }
+  }
 };
 </script>

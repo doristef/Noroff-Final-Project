@@ -1,27 +1,36 @@
 <template>
   <div id="app">
     <Navigation :navigation="this.navigation" :hideNavbar="this.hideNavbar" />
-    <PageHeader />
-    <Frontpage />
+    <router-view :establishments="this.establishments" />
+    <router-view name="helper" />
     <PageFooter />
   </div>
 </template>
 <script>
+/* Import Components */
 import Navigation from "./components/Navigation.vue";
-import PageHeader from "./components/Header.vue";
-import Frontpage from "./components/Frontpage.vue";
 import PageFooter from "./components/Footer.vue";
+import router from "./router.js";
+
+/* FETCH All Establishments */
+import axios from "axios";
+const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking Cross-Origin request
+const apiURL =
+  "http://doristef.me/semester4/FinalProject/server/establishments.json"; // API to fetch from
+/* -------------- */
 
 export default {
   name: "app",
+  router,
   components: {
     Navigation,
-    PageHeader,
-    Frontpage,
     PageFooter
   },
   data() {
     return {
+      /* Establishments */
+      establishments: [],
+      errors: [],
       /* NAVIGATION */
       navigation: {
         accomodations: "Accomodations",
@@ -34,7 +43,23 @@ export default {
   },
 
   methods: {
-    onScroll() {
+    // API CALL
+    apiCall: function() {
+      axios
+        .get(corsURL + apiURL)
+        .then(({ data }) => {
+          this.establishments = data;
+        })
+        .catch(e => {
+          this.errors.push(e);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    }, // apiCall
+
+    // ON SCROLL
+    onScroll: function() {
       var sy = window.scrollY;
       var ih = window.innerHeight;
       var currentScrollPosition = sy + ih;
@@ -54,29 +79,9 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.onScroll);
+  },
+  created() {
+    this.apiCall();
   }
 };
 </script>
-<!--
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
--->

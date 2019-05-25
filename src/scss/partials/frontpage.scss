@@ -13,6 +13,49 @@
 }
 
 .icon {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: 1rem 0.5rem;
+    @media only screen and (min-device-width: $medScreen){
+        height: 70px;
+        width: 70px;
+    }
+    &-small {
+        height: 30px !important;
+        width: 30px !important;  
+    }
+    
+    background-position: center center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+
+    &-suitcase {
+        background-image: url('../assets/icon-dark_Suitcase.png');
+    }
+    &-money {
+        background-image: url('../assets/icon-dark_Money.png');
+    }
+    &-person {
+        background-image: url('../assets/icon-dark_Money.png');
+    }
+    &-price {
+        content: '&copy;';
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    &-text {
+        max-width: calc(100% - 140px);
+        font-size: 1rem;
+        font-family: Montserrat;
+        font-weight: 600;
+        @media only screen and (max-device-width: $medScreen){
+            width: 65%;
+            font-size: 0.9rem;
+        } 
+    }
+
     &-container {
         border-top: 1px solid $mainColor;
         border-bottom: 1px solid $mainColor;
@@ -23,32 +66,5 @@
             padding: 3rem;
             margin: 0;
         }
-    }
-    display: inline-block;
-    height: 50px;
-    width: 50px;
-    margin: 0.5rem;
-    @media only screen and (min-device-width: $medScreen){
-        height: 65px;
-        width: 65px;
-        margin: 1rem;
-    }
-    
-    background-position: center center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-
-    &-suitcase {
-        background-image: url('../assets/icon_Suitcase.png');
-    }
-    &-money {
-        background-image: url('../assets/icon_Money.png');
-    }
-
-    &-text {
-        max-width: calc(100% - 180px);
-        @media only screen and (max-device-width: $medScreen){
-            width: 65%;
-        } 
     }
 }

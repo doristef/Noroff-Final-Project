@@ -1,0 +1,23 @@
+.card {
+    &-body {
+        padding: 1rem;
+    }
+    &-hotel {
+        max-width: 25rem;
+        width: 25rem;
+    }
+    &-img {
+        &-top {
+            object-fit: cover; /* Do not scale the image */
+            object-position: center; /* Center the image within the element */
+            width: 100%;
+            height: 250px;
+        }
+    }
+    &-footer {
+        &-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+    }
+}

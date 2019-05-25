@@ -2,11 +2,7 @@
   <div class="[ nav-container ]" :class="{ 'nav-container-hide': hideNavbar }">
     <div class="[ nav ]">
       <div class="[ nav-brand ]" @click="clicked ? navClick() : ''">
-        <router-link
-          to="/home"
-          class="[ nav-brand-text ]"
-          active-class="[ nav-brand-active ]"
-        >
+        <router-link to="/" class="[ nav-brand-text ]">
           Holidaze
         </router-link>
       </div>
@@ -74,19 +70,10 @@ export default {
     clicked: false
   }),
   methods: {
-    open() {
-      this.isOpen = true;
-      this.navText = "Close";
-    },
-    close() {
-      this.isOpen = false;
-      this.navText = "Open";
-    },
-    toggle() {
-      this.isOpen ? this.close() : this.open();
-    },
     navClick() {
-      this.clicked = !this.clicked;
+      if (window.innerWidth < 1020) {
+        this.clicked = !this.clicked;
+      }
     }
   }
 };

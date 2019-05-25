@@ -1,9 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
 import store from "./store";
 
 Vue.config.productionTip = false;
+/* Vue Router */
+import Router from "vue-router";
+Vue.use(Router);
 
 /* Lodash */
 import VueLodash from "vue-lodash";
@@ -16,8 +18,13 @@ import "./scss/styles.scss";
 import "animate.css/animate.css";
 Vue.use(BootstrapVue);
 
+/* FontAwesome - FortAwesome  */
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUserAlt, faDollarSign } from "@fortawesome/free-solid-svg-icons";
+library.add(faUserAlt, faDollarSign);
+
 new Vue({
-  router,
+  Router,
   store,
   render: h => h(App)
 }).$mount("#app");
