@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Navigation :navigation="this.navigation" :hideNavbar="this.hideNavbar" />
-    <router-view :establishments="this.establishments" />
+    <router-view
+      :establishments="this.establishments"
+      @searchEstablishment="onSearch"
+    />
     <router-view name="helper" />
     <PageFooter />
   </div>
@@ -31,6 +34,7 @@ export default {
       /* Establishments */
       establishments: [],
       errors: [],
+      search: "",
       /* NAVIGATION */
       navigation: {
         accomodations: "Accomodations",
@@ -72,7 +76,11 @@ export default {
 
       this.hideNavbar = currentScrollPosition > this.lastScrollPosition;
       this.lastScrollPosition = currentScrollPosition;
-    } // onScroll
+    }, // onScroll
+
+    onSearch: function(e) {
+      this.search = e;
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.onScroll);

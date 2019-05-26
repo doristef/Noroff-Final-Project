@@ -4,7 +4,11 @@
       <!--- SEARCH --->
       <b-row class="[ vh100 ][ justify-content-center ]" align-v="center">
         <b-col align-self="center">
-          <b-form @submit.prevent="onSubmit" class="[ search ]">
+          <b-form
+            @submit.prevent="onSubmit"
+            class="[ search ]"
+            autocomplete="off"
+          >
             <b-form-group
               id="search"
               label-for="search"
@@ -12,22 +16,22 @@
               class="[ mb-0 ]"
             >
               <b-form-input
+                autocomplete="off"
                 id="search"
                 type="text"
                 size="lg"
                 placeholder="Search"
                 v-model="search"
-                autocomplete="off"
-                list="autocomplete"
+                list="establishments"
                 tabindex="1"
               />
               <datalist
-                id="autocomplete"
+                id="establishments"
                 class="[ form-control ][ search-dropdown ]"
                 v-if="search && filteredSearch.length"
               >
                 <option
-                  tabindex="2"
+                  :tabindex="2 + i"
                   class="[ search-dropdown-item ]"
                   v-for="(item, i) in filteredSearch"
                   :key="i"
@@ -38,7 +42,8 @@
                 </option>
               </datalist>
               <b-form-text id="search-helper" class="[ search-helper ]">
-                Example: Bergen, Norway
+                Hotel: Sunset Beach,<br />
+                Max price: 120
               </b-form-text>
             </b-form-group>
             <div class="[ search-button ]">
@@ -47,6 +52,7 @@
                 type="submit"
                 variant="primary"
                 class="[ search-button ]"
+                @click="onSubmit"
                 >Search Destination</b-button
               >
             </div>
@@ -69,13 +75,21 @@ export default {
   },
   computed: {
     filteredSearch() {
-      return this.establishments.filter(
-        function(item) {
-          return item.establishmentName
+      return this.establishments.filter(item => {
+        return (
+          item.establishmentName
             .toLowerCase()
-            .match(this.search.toLowerCase());
-        }.bind(this)
-      );
+            .match(this.search.toLowerCase()) ||
+          parseInt(item.price) <= this.search
+        );
+      });
+    }
+  },
+
+  methods: {
+    onSubmit() {
+      this.$router.push("/accomodations/search/" + this.search);
+      this.$emit("searchEstablishment", this.search);
     }
   }
 };

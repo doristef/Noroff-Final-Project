@@ -3,15 +3,25 @@
         padding: 1rem;
     }
     &-hotel {
-        max-width: 25rem;
-        width: 25rem;
+        max-width: 28rem;
+        width: 28rem;
+        @media only screen and (max-device-width: $medScreen){
+            max-width: 22rem;
+            width: 22rem;
+        }
     }
     &-img {
         &-top {
             object-fit: cover; /* Do not scale the image */
             object-position: center; /* Center the image within the element */
             width: 100%;
-            height: 250px;
+            max-height: 350px;
+            height: 350px;
+            
+            @media only screen and (max-device-width: $medScreen){
+                max-height: 250px;
+                height: 250px;
+            }
         }
     }
     &-footer {

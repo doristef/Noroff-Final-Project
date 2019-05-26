@@ -23,7 +23,7 @@
         <b-card-sub-title>
           {{ establishment.establishmentEmail }}
         </b-card-sub-title>
-
+        <b-button variant="primary" class="[ float-right ]" @click="$router.push($route.fullPath + '/book/')">Check Availability </b-button>
         <template slot="footer">
           <font-awesome-icon icon="user-alt" size="lg" class="[ ml-2 mr-2 ]" />
           <span class="[ card-footer-text ]">{{
