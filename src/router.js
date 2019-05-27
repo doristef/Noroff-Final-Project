@@ -11,10 +11,11 @@ import ThankYou from "./components/ThankYou.vue";
 
 /* ADMIN */
 import Login from "./components/admin/Login.vue";
+import Enquiries from "./components/admin/ReadEnquiries.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -52,6 +53,13 @@ export default new Router({
     {
       path: "/admin",
       component: Login
+    },
+    {
+      path: "/admin/dash",
+      component: Enquiries,
+      meta: {
+        requiresAuth: true
+      }
     }
   ],
   // eslint-disable-next-line
@@ -59,3 +67,17 @@ export default new Router({
     return { x: 0, y: 0 };
   }
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (sessionStorage.getItem("AuthToken")) {
+      next();
+      return;
+    }
+    next("/admin");
+  } else {
+    next();
+  }
+});
+
+export default router;

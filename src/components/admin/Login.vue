@@ -68,8 +68,8 @@ export default {
         this.state = true;
 
         const sessionID = "numbersForSure123456789";
-        sessionStorage.setItem("sessionID", sessionID);
-        this.$router.push("/moreAdmin/");
+        sessionStorage.setItem("AuthToken", sessionID);
+        this.$router.push("/admin/dash");
       }
     }
   }

@@ -77,7 +77,7 @@
           @submit.prevent="onSubmit"
           @reset="onReset"
           method="POST"
-          action="http://localhost/holidaze/server/enquiry-success.php"
+          action="http://doristef.me/semester4/FinalProject/server/enquiry-success.php"
         >
           <input
             type="hidden"

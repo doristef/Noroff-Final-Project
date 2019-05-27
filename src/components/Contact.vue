@@ -117,11 +117,6 @@ export default {
       this.form.email = "";
       this.form.name = "";
       this.form.message = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
     }
   }
 };
