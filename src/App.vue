@@ -11,8 +11,8 @@
 </template>
 <script>
 /* Import Components */
-import Navigation from "./components/Navigation.vue";
-import PageFooter from "./components/Footer.vue";
+import Navigation from "./components/sections/Navigation.vue";
+import PageFooter from "./components/sections/Footer.vue";
 import router from "./router.js";
 
 /* FETCH All Establishments */
@@ -21,6 +21,11 @@ const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking
 const apiURL =
   "http://doristef.me/semester4/FinalProject/server/establishments.json"; // API to fetch from
 /* -------------- */
+/* LOGIN */
+(function() {
+  localStorage.setItem("username", "doristef");
+  localStorage.setItem("password", "1234");
+})();
 
 export default {
   name: "app",

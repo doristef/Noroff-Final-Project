@@ -2,9 +2,7 @@
     NAVBAR & BRAND
 ************************************************/
 .nav {
-    background-color: $mainColor;
     display: block;
-    border-bottom: 2px solid $accentColor;
     margin: 0;
     padding: 0;
     height: $navHeight;
@@ -15,13 +13,15 @@
 
 /* nav-Container */
     &-container {
+        background-color: $mainColor;
+        border-bottom: 2px solid $accentColor;
         /* For smooth hide/show navigation bar */
         transform: translate3d(0, 0, 0);
         transition: transform 0.45s cubic-bezier(0.77,0.2,0.05,1.0);
 
         @media only screen and (min-device-width: $medScreen){
             &-hide {
-                transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -90%, 0);
                 transition: transform 0.45s cubic-bezier(0.77,0.2,0.05,1.0);
             }
         }
@@ -62,6 +62,29 @@
         }
 
     }
+
+    &-admin {
+
+        &-big {
+            @media only screen and (max-device-width: $medScreen){
+                opacity: 0; 
+                display: none;
+            }
+            float: right;
+        }
+        &-min {
+            @media only screen and (min-device-width: $medScreen){
+                opacity: 0; 
+                display: none;
+            }
+            position: absolute;
+            bottom: 15vh;
+            right: 10px;
+            float: right;
+        }
+    }
+
+
 
 /***********************************************
     HAMBURGER ICON 
@@ -246,6 +269,12 @@
             padding: 15px 25px;
             height: 55px;
             width: 100%;
+
+            &-admin {
+                color: $accentColor !important;
+
+                &:hover { color: $quiteWhite !important; background-color: transparent !important; }
+            }
             
             &:hover {
                 background-color: $accentColor;

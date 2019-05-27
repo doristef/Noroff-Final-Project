@@ -2,7 +2,12 @@
   <b-container class="[ mt-2 ][ vh100 ]">
     <b-row class="[ pt-4 ]">
       <b-col align-self="center" class="[ m-2 ]">
-        <b-form @submit="onSubmit" @reset="onReset" method="POST" action='http://localhost/holidaze/server/contact-success.php'>
+        <b-form
+          @submit="onSubmit"
+          @reset="onReset"
+          method="POST"
+          action="http://localhost/holidaze/server/contact-success.php"
+        >
           <b-form-group
             id="input-group-1"
             label="Email address:"
@@ -14,7 +19,8 @@
               type="email"
               required
               placeholder="Enter email"
-              name="email" id="email"
+              name="email"
+              id="email"
             ></b-form-input>
           </b-form-group>
 
@@ -27,14 +33,15 @@
               v-model="form.name"
               required
               placeholder="Enter name"
-              name="clientName" 
+              name="clientName"
               id="clientName"
             ></b-form-input>
           </b-form-group>
 
           <b-form-group id="input-group-3" label="Message:" label-for="message">
             <b-form-textarea
-              name="message" id="message"
+              name="message"
+              id="message"
               v-model="form.message"
               placeholder="Enter something..."
               rows="3"
@@ -43,7 +50,9 @@
           </b-form-group>
 
           <b-button type="submit" variant="primary">Submit</b-button>
-          <b-button type="reset" variant="warning" class="[ ml-2 ]">Reset </b-button>
+          <b-button type="reset" variant="warning" class="[ ml-2 ]"
+            >Reset
+          </b-button>
         </b-form>
       </b-col>
     </b-row>
@@ -64,12 +73,10 @@ export default {
     };
   },
   methods: {
-    onSubmit(evt) {
+    onSubmit() {
       alert(JSON.stringify(this.form));
-      
     },
-    onReset(evt) {
-      evt.preventDefault();
+    onReset() {
       // Reset our form values
       this.form.email = "";
       this.form.name = "";

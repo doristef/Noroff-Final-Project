@@ -1,13 +1,16 @@
 import Vue from "vue";
 import Router from "vue-router";
-import PageHeader from "./components/Header.vue";
+import PageHeader from "./components/sections/Header.vue";
 import PageFront from "./components/Frontpage.vue";
-import Hotels from "./components/Hotels.vue";
-import HotelSearch from "./components/HotelSearch.vue";
-import HotelSpecific from "./components/HotelSpecific.vue";
-import HotelCheck from "./components/HotelCheck.vue";
+import Hotels from "./components/establishment/Hotels.vue";
+import HotelSearch from "./components/establishment/HotelSearch.vue";
+import HotelSpecific from "./components/establishment/HotelSpecific.vue";
+import HotelCheck from "./components/establishment/HotelCheck.vue";
 import Contact from "./components/Contact.vue";
 import ThankYou from "./components/ThankYou.vue";
+
+/* ADMIN */
+import Login from "./components/admin/Login.vue";
 
 Vue.use(Router);
 
@@ -45,6 +48,10 @@ export default new Router({
     {
       path: "/thankyou",
       component: ThankYou
+    },
+    {
+      path: "/admin",
+      component: Login
     }
   ],
   // eslint-disable-next-line

@@ -1,6 +1,8 @@
-@import './../../node_modules/bootstrap/scss/bootstrap';
+/* Imports for Bootstrap */
+@import './../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './../../node_modules/bootstrap-vue/src/index.scss';
 
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Cookie|Lato|Montserrat:400,500i,600,700,900&display=swap');
 
 @import './partials/variables.scss';
@@ -35,4 +37,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .vh100 {
     min-height: 100vh;
+}
+.w100 {
+    width: 100%;
+    min-width: 100%;
+}
+
+.pb150 {
+    padding-bottom: 150px;
 }

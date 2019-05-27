@@ -1,11 +1,23 @@
 <template>
   <div class="[ nav-container ]" :class="{ 'nav-container-hide': hideNavbar }">
+    <div class="[ nav-admin nav-admin-big ][ mr-2 ]">
+      <router-link
+        to="/admin"
+        class="[ navigation-link ]"
+        active-class="[ navigation-link-active ]"
+      >
+        <span class="[ navigation-list-item ]" @click="navClick()">
+          Admin
+        </span>
+      </router-link>
+    </div>
     <div class="[ nav ]">
       <div class="[ nav-brand ]" @click="clicked ? navClick() : ''">
         <router-link to="/" class="[ nav-brand-text ]">
           Holidaze
         </router-link>
       </div>
+
       <div class="[ nav-hamburger ]" @click="navClick()">
         <div
           class="[ nav-hamburger-bar nav-hamburger-bar-1 ]"
@@ -50,6 +62,20 @@
               </li>
             </router-link>
           </ul>
+          <div class="[ nav-admin nav-admin-min ][ mr-2 ]">
+            <router-link
+              to="/admin"
+              class="[ navigation-link ]"
+              active-class="[ navigation-link-active ]"
+            >
+              <span
+                class="[ navigation-list-item navigation-list-item-admin ]"
+                @click="navClick()"
+              >
+                Admin
+              </span>
+            </router-link>
+          </div>
         </div>
         <!-- navigation -->
       </div>
