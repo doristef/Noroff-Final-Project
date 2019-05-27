@@ -1,0 +1,60 @@
+.btn {
+    -webkit-transition: background-color all 0.35s ease-in-out;
+    -moz-transition: background-color all 0.35s ease-in-out;
+    -o-transition: background-color all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    color: $quiteWhite !important;
+
+    &-primary {
+        background-color: $mainColor;
+        border-color: transparent;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+        box-shadow: inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+
+        &:hover {
+            background-color: darken($mainColor, 20%);
+            border-color: transparent;
+        }
+        &:disabled {
+            background-color: lighten($mainColor, 20%);
+            border-color: transparent;
+
+            &:hover {
+                background-color: lighten($mainColor, 20%);
+                border-color: transparent;
+            }
+        }
+    }
+    &-warning {
+        background-color: $warningColor;
+        border-color: transparent;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+        box-shadow: inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+
+        &:hover {
+            background-color: darken($warningColor, 20%);
+            border-color: transparent;
+        }
+        &:disabled {
+            background-color: lighten($warningColor, 5%);
+            border-color: transparent;
+
+            &:hover {
+                background-color: lighten($warningColor, 5%);
+                border-color: transparent;
+            }
+        }
+    }
+
+    &-outline {
+        &-primary {
+            color: $mainColor !important;
+            border-color: $mainColor !important;
+    
+            &:hover {
+                background-color: $mainColor;
+                color: $quiteWhite !important;
+            }
+        }
+    }
+}
