@@ -10,22 +10,33 @@
         tag="article"
         class="[ card-hotel ][ m-4 ]"
       >
-      <b-card-title>
+        <b-card-title>
           <b>{{ item.clientName }}</b>
-      </b-card-title>
+        </b-card-title>
 
         <b-card-sub-title>
-            {{ item.email }}
+          {{ item.email }}
         </b-card-sub-title>
 
         <b-card-body>
-        <b class="[ card-text-bold ]">Message:</b>
-            <p>
-                {{ item.message }}
-            </p>
-            <div class="[ mt-5 mb-2 ][ text-center ]">
-                <b-button variant="primary" type="button"><a :href="'mailto:'+item.email+'?subject=Holidaze%20Contact&body='+item.message" class="[ card-button ]">Reply message</a></b-button>
-            </div>
+          <b class="[ card-text-bold ]">Message:</b>
+          <p>
+            {{ item.message }}
+          </p>
+          <div class="[ mt-5 mb-2 ][ text-center ]">
+            <b-button variant="primary" type="button"
+              ><a
+                :href="
+                  'mailto:' +
+                    item.email +
+                    '?subject=Holidaze%20Contact&body=' +
+                    item.message
+                "
+                class="[ card-button ]"
+                >Reply message</a
+              ></b-button
+            >
+          </div>
         </b-card-body>
       </b-card>
 
@@ -38,12 +49,11 @@
 /* Axios and apiUrl */
 import axios from "axios";
 const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking Cross-Origin request
-const apiURL =
-  "http://doristef.me/semester4/FinalProject/server/contact.json"; // API to fetch from
+const apiURL = "http://doristef.me/semester4/FinalProject/server/contact.json"; // API to fetch from
 const apiConfig = {
-    headers: { 'Content-Type': 'application/json' },
-    responseType: 'json'
-}
+  headers: { "Content-Type": "application/json" },
+  responseType: "json"
+};
 
 export default {
   name: "messages",

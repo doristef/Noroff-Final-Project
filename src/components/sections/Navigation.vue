@@ -1,6 +1,6 @@
 <template>
   <div class="[ nav-container ]" :class="{ 'nav-container-hide': hideNavbar }">
-<!--- ADMIN NAVIGATION -->
+    <!--- ADMIN NAVIGATION -->
     <div class="[ nav-admin nav-admin-big ][ mr-2 ]">
       <router-link
         to="/admin"
@@ -18,7 +18,7 @@
         </span>
       </div>
     </div>
-<!--- ADMIN NAVIGATION END! -->
+    <!--- ADMIN NAVIGATION END! -->
 
     <div class="[ nav ]">
       <div class="[ nav-brand ]" @click="clicked ? navClick() : ''">
@@ -72,7 +72,7 @@
             </router-link>
           </ul>
 
-<!--- ADMIN NAVIGATION -->
+          <!--- ADMIN NAVIGATION -->
           <ul class="[ navigation-list ]" v-else>
             <router-link
               to="/admin/dash"
@@ -114,7 +114,7 @@
               </li>
             </router-link>
           </ul>
-<!--- ADMIN NAVIGATION END! --->
+          <!--- ADMIN NAVIGATION END! --->
 
           <div class="[ nav-admin nav-admin-min ][ mr-2 ]">
             <router-link
@@ -136,8 +136,7 @@
               </span>
             </div>
           </div>
-<!--- ADMIN NAVIGATION END! -->
-
+          <!--- ADMIN NAVIGATION END! -->
         </div>
         <!-- navigation -->
       </div>
@@ -149,19 +148,17 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
-import store from './../../store.js';
+import { mapState } from "vuex";
 
 export default {
   name: "navigation",
-  components: { store },
   props: ["navigation", "hideNavbar"],
   data: () => ({
     navText: "Open",
     isOpen: false,
-    clicked: false,
+    clicked: false
   }),
-  computed: mapState([ 'authenticated' ]),
+  computed: mapState(["authenticated"]),
   methods: {
     navClick() {
       if (window.innerWidth < 1020) {
@@ -169,9 +166,9 @@ export default {
       }
     },
     logOut() {
-      this.$store.commit('changeState');
+      this.$store.commit("changeState");
       sessionStorage.removeItem("AuthToken");
-      this.$router.push('/');
+      this.$router.push("/");
     }
   }
 };

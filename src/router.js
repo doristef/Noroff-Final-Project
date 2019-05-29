@@ -58,9 +58,9 @@ const router = new Router({
     },
     {
       path: "/admin/dash",
-      components: { 
-        default: Enquiries, 
-        helper: Messages 
+      components: {
+        default: Enquiries,
+        helper: Messages
       },
       meta: {
         requiresAuth: true
@@ -86,7 +86,7 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
+    }
   ],
   // eslint-disable-next-line
     scrollBehavior (to, from, savedPosition) {

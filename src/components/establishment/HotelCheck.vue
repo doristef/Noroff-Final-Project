@@ -27,7 +27,9 @@
           </b-col>
           <b-col md="6">
             <b-card-title class="[ card-hotel-header ][ ml-2 mt-2 ]">
-              {{ form.establishment = establishment.establishmentName }}</b-card-title
+              {{
+                (form.establishment = establishment.establishmentName)
+              }}</b-card-title
             >
 
             <b-card-body align-v="bottom">
@@ -116,7 +118,11 @@
           >
             <input type="hidden" name="checkin" :value="form.checkin" />
             <input type="hidden" name="checkout" :value="form.checkout" />
-            <input type="hidden" name="establishment" :value="form.establishment" />
+            <input
+              type="hidden"
+              name="establishment"
+              :value="form.establishment"
+            />
             <HotelDatePicker
               @confirm="applyDate"
               @reset="cancelDate"

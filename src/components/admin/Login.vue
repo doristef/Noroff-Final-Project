@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import { store } from './../../store.js';
-
 export default {
   name: "Login",
 
@@ -76,7 +74,7 @@ export default {
       }
     },
     changeState() {
-      this.$store.commit('changeState');
+      this.$store.commit("changeState");
     }
   }
 };

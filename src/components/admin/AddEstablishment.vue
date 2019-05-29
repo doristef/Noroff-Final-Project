@@ -2,7 +2,9 @@
   <b-container>
     <b-row align-h="center">
       <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
-        <h1 class="[ card-hotel-header ][ mt-5 mb-4 ]">Add a new Establishment</h1>
+        <h1 class="[ card-hotel-header ][ mt-5 mb-4 ]">
+          Add a new Establishment
+        </h1>
       </b-col>
     </b-row>
     <b-row class="[ mb-5 pb150 ]" align-h="center">
@@ -56,7 +58,11 @@
           >
             <input type="hidden" name="checkin" :value="form.checkin" />
             <input type="hidden" name="checkout" :value="form.checkout" />
-            <input type="hidden" name="establishment" :value="form.establishment" />
+            <input
+              type="hidden"
+              name="establishment"
+              :value="form.establishment"
+            />
             <HotelDatePicker
               @confirm="applyDate"
               @reset="cancelDate"
@@ -79,21 +85,8 @@
 </template>
 
 <script>
-import HotelDatePicker from "@northwalker/vue-hotel-datepicker";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-/* Regex from http://emailregex.com/ */
-const emailRegex = RegExp(
-  // eslint-disable-next-line
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}.[0-9]{1,3}\.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-);
-
-/* Regex from doristef.me  */
-const nameRegex = /^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,0-9]{2,}$/; // Only check for characters that are not allowed
-
 export default {
-  name: "establishments",
-  components: { FontAwesomeIcon, HotelDatePicker },
-  props: ["establishments"],
+  name: "addestablishment",
   data() {
     return {
       form: {
@@ -106,41 +99,10 @@ export default {
       }
     };
   },
-  computed: {
-    filteredId() {
-      return this.establishments.filter(e => e.id === this.$route.params.id);
-    }
-  },
   methods: {
-    applyDate(result) {
-      this.form.checkin = result.start;
-      this.form.checkout = result.end;
-    },
-    cancelDate() {
-      this.form.checkin = "";
-      this.form.checkout = "";
-    },
     onSubmit() {
-      if (
-        !nameRegex.test(this.form.name) ||
-        !emailRegex.test(this.form.email) ||
-        this.form.checkin === "" ||
-        this.form.checkout === ""
-      ) {
-        this.form.errors = [];
-        if (!nameRegex.test(this.form.name)) {
-          this.form.errors.push("Invalid characters in name.");
-        }
-        if (this.form.email !== null && !emailRegex.test(this.form.email)) {
-          this.form.errors.push("Incorrect format of email.");
-        }
-        if (this.form.checkin === "" || this.form.checkout === "") {
-          this.form.errors.push("Checkin / Checkout dates required.");
-        }
-      } else {
-        this.form.errors = [];
-        return this.$refs.form.submit();
-      }
+      this.form.errors = [];
+      return this.$refs.form.submit();
     },
     onReset() {
       // Reset our form values

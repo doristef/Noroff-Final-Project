@@ -2,10 +2,9 @@
   <div id="app">
     <Navigation :navigation="this.navigation" :hideNavbar="this.hideNavbar" />
     <router-view
-      :establishments="this.establishments" 
+      :establishments="this.establishments"
       @searchEstablishment="onSearch"
       :search="this.search"
-      
     />
     <router-view name="helper" />
     <PageFooter />
@@ -16,7 +15,6 @@
 import Navigation from "./components/sections/Navigation.vue";
 import PageFooter from "./components/sections/Footer.vue";
 import router from "./router.js";
-import { store } from "./store.js";
 
 /* FETCH All Establishments */
 import axios from "axios";
@@ -24,12 +22,11 @@ const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking
 const apiURL =
   "http://doristef.me/semester4/FinalProject/server/establishments.json"; // API to fetch from
 const apiConfig = {
-    headers: { 'Content-Type': 'application/json' },
-    responseType: 'json'
-}
+  headers: { "Content-Type": "application/json" },
+  responseType: "json"
+};
 
 /* -------------- */
-
 
 export default {
   name: "app",
@@ -89,7 +86,7 @@ export default {
 
     onSearch: function(e) {
       this.search = e;
-    },
+    }
   },
 
   mounted() {
@@ -101,8 +98,8 @@ export default {
 
   created() {
     this.apiCall();
-    if( sessionStorage.getItem("AuthToken") ){
-      this.$store.commit('changeState');
+    if (sessionStorage.getItem("AuthToken")) {
+      this.$store.commit("changeState");
     }
     /* Create LOGIN credentials */
     (function() {

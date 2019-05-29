@@ -5,16 +5,16 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    authenticated: false,
+    authenticated: false
   },
   mutations: {
-    changeState (state) {
+    changeState(state) {
       state.authenticated = !state.authenticated;
     }
   },
   actions: {
-    change ({ commit }) {
-      commit('changeState');
+    change({ commit }) {
+      commit("changeState");
     }
   }
 });
