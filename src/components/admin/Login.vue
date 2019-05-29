@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { store } from './../../store.js';
+
 export default {
   name: "Login",
 
@@ -66,11 +68,15 @@ export default {
         this.showError = false;
         this.errorMessage = "";
         this.state = true;
+        this.changeState();
 
-        const sessionID = "numbersForSure123456789";
+        const sessionID = "holidazeAdmin";
         sessionStorage.setItem("AuthToken", sessionID);
         this.$router.push("/admin/dash");
       }
+    },
+    changeState() {
+      this.$store.commit('changeState');
     }
   }
 };

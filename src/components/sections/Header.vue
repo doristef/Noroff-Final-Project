@@ -70,7 +70,7 @@ export default {
   props: ["establishments"],
   data() {
     return {
-      search: ""
+      search: null
     };
   },
   computed: {

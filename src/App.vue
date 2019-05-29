@@ -2,8 +2,10 @@
   <div id="app">
     <Navigation :navigation="this.navigation" :hideNavbar="this.hideNavbar" />
     <router-view
-      :establishments="this.establishments"
+      :establishments="this.establishments" 
       @searchEstablishment="onSearch"
+      :search="this.search"
+      
     />
     <router-view name="helper" />
     <PageFooter />
@@ -14,18 +16,20 @@
 import Navigation from "./components/sections/Navigation.vue";
 import PageFooter from "./components/sections/Footer.vue";
 import router from "./router.js";
+import { store } from "./store.js";
 
 /* FETCH All Establishments */
 import axios from "axios";
 const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking Cross-Origin request
 const apiURL =
   "http://doristef.me/semester4/FinalProject/server/establishments.json"; // API to fetch from
+const apiConfig = {
+    headers: { 'Content-Type': 'application/json' },
+    responseType: 'json'
+}
+
 /* -------------- */
-/* LOGIN */
-(function() {
-  localStorage.setItem("username", "doristef");
-  localStorage.setItem("password", "1234");
-})();
+
 
 export default {
   name: "app",
@@ -39,7 +43,7 @@ export default {
       /* Establishments */
       establishments: [],
       errors: [],
-      search: "",
+      search: null,
       /* NAVIGATION */
       navigation: {
         accomodations: "Accomodations",
@@ -55,7 +59,7 @@ export default {
     // API CALL
     apiCall: function() {
       axios
-        .get(corsURL + apiURL)
+        .get(corsURL + apiURL, apiConfig)
         .then(({ data }) => {
           this.establishments = data;
         })
@@ -85,16 +89,26 @@ export default {
 
     onSearch: function(e) {
       this.search = e;
-    }
+    },
   },
+
   mounted() {
     window.addEventListener("scroll", this.onScroll);
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.onScroll);
   },
+
   created() {
     this.apiCall();
+    if( sessionStorage.getItem("AuthToken") ){
+      this.$store.commit('changeState');
+    }
+    /* Create LOGIN credentials */
+    (function() {
+      localStorage.setItem("username", "doristef");
+      localStorage.setItem("password", "1234");
+    })();
   }
 };
 </script>

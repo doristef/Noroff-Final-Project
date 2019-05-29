@@ -41,6 +41,7 @@
         padding: 0 1rem;
         border-radius: 0.25rem;
         height: $navHeight;
+        line-height: $navHeight;
         cursor: pointer;
         /* nav-Brand on Small Screen */
             @media only screen and (max-device-width: $medScreen){
@@ -219,6 +220,7 @@
         font-size: 1.2rem;
         color: $quiteWhite !important;
         position: relative;
+        cursor: pointer;
 
         &:hover {
             text-decoration: none !important;

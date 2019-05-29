@@ -7,6 +7,32 @@ $warningColor : #f99f99;
 $lightGray : #D3D3D3;
 $gray : #333;
 $lighterGray : #5d5d5d;
-$medScreen : '1020px';
 
+
+//** FONT **//
+$bodyFont : 'Lato', sans-serif;
+$bodyWeight : 300;
+$bodyFontSize : 16px;
+$bodyFont2 : 'Montserrat', sans-serif;
+$bodyFont2Weight: 400;
+$headingFont : 'Cookie', cursive;
+$headingFontWeight : 'bold';
+
+
+$lineHeight: 1.5em;
+
+//** FONT SIZES **//
+$headings: (
+    h1 : 42px,
+    h2 : 31px,
+    h3 : 26px,
+    h4 : 22px,
+    h5 : 20px,
+    h6 : 16px );
+
+
+
+//** SIZES **//
+$smallScreen: '767px';
+$medScreen : '1020px';
 $navHeight: 65px;

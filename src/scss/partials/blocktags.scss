@@ -1,0 +1,49 @@
+//** GENERAL TAGS **//
+
+body {
+    background-color: $quiteWhite;
+    font-family: 'Lato', sans-serif;
+    font-weight: $bodyWeight !important;
+    line-height: $lineHeight;
+    font-style: normal;
+    font-size: $bodyFontSize;
+    color: $gray;
+    overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
+    margin-top: $navHeight !important;
+    
+}
+
+//** HEADINGS **//
+
+@each $heading, $size in $headings {
+    #{$heading}, .#{$heading} {
+        @include fontRem( $size );
+        font-family: $headingFontWeight;
+        color: $gray;
+        font-weight: $headingFontWeight;
+    }
+}
+
+//** LINK **//
+a {
+    &:link { 
+        color: $gray; 
+        transition: color 0.3s ease;
+    }
+    
+    &:visited {
+        color: $gray;
+        text-decoration: none;
+    }
+    
+    &:active {
+        color: grayen($gray, 10%);
+        text-decoration: underline;
+    }
+    
+    &:hover {
+        color: $accentColor;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+}

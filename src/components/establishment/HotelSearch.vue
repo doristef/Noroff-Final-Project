@@ -8,9 +8,17 @@
         >Back</b-button
       >
     </b-row>
-    <b-row align-h="center">
+    <b-row align-h="center" v-if="!filteredSearch.length || this.search === null">
+      <b-col cols="12" md="4">
+        <h2> No match </h2>
+        <p v-if="this.search !== null"> Nothing found that matches search string: <br /></p>
+        <p v-else>No search typed!</p>
+          <h4 class="[ card-text-bold ][ mt-4 mb-3 ml-4 ]" v-if="this.search !== null">{{ this.$route.params.search }}</h4>
+      </b-col>
+    </b-row>
+    <b-row align-h="center" v-else>
       <!--- CARDS --->
-      <router-link
+      <router-link 
         v-for="establishment in filteredSearch"
         :key="establishment.id"
         :to="'/accomodations/' + establishment.id"
@@ -61,7 +69,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   name: "establishmentSearch",
   components: { FontAwesomeIcon },
-  props: ["establishments"],
+  props: ["establishments", "search"],
   computed: {
     filteredSearch() {
       return this.establishments.filter(item => {

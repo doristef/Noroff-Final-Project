@@ -12,6 +12,8 @@ import ThankYou from "./components/ThankYou.vue";
 /* ADMIN */
 import Login from "./components/admin/Login.vue";
 import Enquiries from "./components/admin/ReadEnquiries.vue";
+import Messages from "./components/admin/ReadMessage.vue";
+import AddEstablishment from "./components/admin/AddEstablishment.vue";
 
 Vue.use(Router);
 
@@ -56,11 +58,35 @@ const router = new Router({
     },
     {
       path: "/admin/dash",
+      components: { 
+        default: Enquiries, 
+        helper: Messages 
+      },
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/admin/enquiries",
       component: Enquiries,
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/admin/messages",
+      component: Messages,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/admin/addestablishment",
+      component: AddEstablishment,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ],
   // eslint-disable-next-line
     scrollBehavior (to, from, savedPosition) {

@@ -27,7 +27,7 @@
           </b-col>
           <b-col md="6">
             <b-card-title class="[ card-hotel-header ][ ml-2 mt-2 ]">
-              {{ establishment.establishmentName }}</b-card-title
+              {{ form.establishment = establishment.establishmentName }}</b-card-title
             >
 
             <b-card-body align-v="bottom">
@@ -79,11 +79,6 @@
           method="POST"
           action="http://doristef.me/semester4/FinalProject/server/enquiry-success.php"
         >
-          <input
-            type="hidden"
-            name="establishment"
-            :value="this.$route.params.id"
-          />
           <b-form-group
             id="email"
             label="Email address:"
@@ -121,6 +116,7 @@
           >
             <input type="hidden" name="checkin" :value="form.checkin" />
             <input type="hidden" name="checkout" :value="form.checkout" />
+            <input type="hidden" name="establishment" :value="form.establishment" />
             <HotelDatePicker
               @confirm="applyDate"
               @reset="cancelDate"
@@ -165,6 +161,7 @@ export default {
         email: "",
         checkin: "",
         checkout: "",
+        establishment: "",
         errors: []
       }
     };
@@ -212,6 +209,9 @@ export default {
       this.form.checkin = "";
       this.form.checkout = "";
     }
+  },
+  mounted() {
+    console.log();
   }
 };
 </script>
