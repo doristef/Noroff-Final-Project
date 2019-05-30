@@ -3,6 +3,10 @@
     <Search
       :rowClass="this.class"
       :establishments="this.establishments"
+      :button="true"
+      :predict="true"
+      :description="false"
+      placeholder="Search"
     /> </b-container
   ><!-- container -->
 </template>

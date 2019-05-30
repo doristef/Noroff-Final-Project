@@ -10,13 +10,19 @@
     </b-row>
     <b-row>
       <b-col>
-        <Search :rowClass="this.class" :establishments="this.establishments" />
+        <Search
+          :establishments="this.establishments"
+          :button="false"
+          :predict="false"
+          :description="true"
+          :placeholder="this.search"
+        />
       </b-col>
     </b-row>
     <b-row align-h="center">
       <b-col cols="12" md="4">
         <p v-if="this.search === null">No search typed!</p>
-        <p v-if="this.search !== null && this.filteredSearch.length < 1">
+        <p v-if="this.search !== null && this.filteredResults.length < 1">
           Nothing found that matches search string: <br />
         </p>
 
@@ -29,7 +35,7 @@
             Nothing
           </h4>
           <h4 class="[ d-inline-block ][ card-text-bold ][ ml-3 ]" v-else>
-            {{ this.$route.params.search }}
+            {{ this.search }}
           </h4>
         </div>
       </b-col>
@@ -37,7 +43,7 @@
     <b-row align-h="center">
       <!--- CARDS --->
       <router-link
-        v-for="establishment in filteredSearch"
+        v-for="establishment in filteredResults"
         :key="establishment.id"
         :to="'/accomodations/' + establishment.id"
       >
@@ -84,31 +90,12 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Search from "./../sections/Search.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "establishmentSearch",
   components: { FontAwesomeIcon, Search },
   props: ["establishments"],
-  data() {
-    return {
-      search: this.$route.params.search
-    };
-  },
-  computed: {
-    filteredSearch() {
-      if (this.search !== null) {
-        return this.establishments.filter(item => {
-          return (
-            item.establishmentName
-              .toLowerCase()
-              .match(this.$route.params.search.toLowerCase()) ||
-            parseInt(item.price) <= this.$route.params.search
-          );
-        });
-      } else {
-        return this.establishments;
-      }
-    }
-  }
+  computed: mapState(["search", "filteredResults"])
 };
 </script>

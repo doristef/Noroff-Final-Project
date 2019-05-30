@@ -18,31 +18,37 @@
             aria-describedby="search-helper"
             class="[ mb-0 ]"
           >
+            <b-form-text slot="description" v-if="description">
+              - You can search by name or price.
+            </b-form-text>
             <b-form-input
               autocomplete="off"
               id="search"
               type="text"
               size="lg"
-              placeholder="Search"
+              :placeholder="placeholder"
               v-model="search"
+              @input="onChange"
               list="establishments"
               tabindex="1"
             />
             <datalist
               id="establishments"
               class="[ form-control ][ search-dropdown ]"
-              v-if="this.search && this.filteredSearch.length"
+              v-if="predict && this.search && this.filteredSearch.length"
             >
-              <option
-                :tabindex="2 + i"
-                class="[ search-dropdown-item ]"
+              <router-link
+                :to="'/accomodations/' + item.id"
                 v-for="(item, i) in filteredSearch"
                 :key="i"
               >
-                <router-link :to="'/accomodations/' + item.id"
-                  >{{ item.establishmentName }}
-                </router-link>
-              </option>
+                <option
+                  :tabindex="2 + i"
+                  class="[ search-dropdown-link ][ my-2 ]"
+                >
+                  {{ item.establishmentName }}
+                </option>
+              </router-link>
             </datalist>
           </b-form-group>
           <div class="[ search-button ][ mt-2 ]">
@@ -52,6 +58,8 @@
               variant="primary"
               class="[ search-button ]"
               @click="onSubmit"
+              v-if="button"
+              :disabled="this.search === ''"
               >Search Destination</b-button
             >
           </div>
@@ -65,33 +73,39 @@
 <script>
 export default {
   name: "search",
-  props: ["establishments", "rowClass"],
+  props: [
+    "establishments",
+    "rowClass",
+    "button",
+    "predict",
+    "description",
+    "placeholder"
+  ],
   data() {
     return {
-      search: null
+      search: ""
     };
   },
   computed: {
     filteredSearch() {
-      if (this.search !== null) {
-        return this.establishments.filter(item => {
-          return (
-            item.establishmentName
-              .toLowerCase()
-              .match(this.search.toLowerCase()) ||
-            parseInt(item.price) <= this.search
-          );
-        });
-      } else {
-        return this.establishments;
-      }
+      return this.establishments.filter(item => {
+        return (
+          item.establishmentName
+            .toLowerCase()
+            .match(this.search.toLowerCase()) ||
+          parseInt(item.price) <= this.search
+        );
+      });
     }
   },
 
   methods: {
     onSubmit() {
       this.$router.push("/accomodations/search/" + this.search);
-      this.$emit("searchEstablishment", this.search);
+    },
+    onChange() {
+      this.$store.commit("searchString", this.search);
+      this.$store.commit("filteredResults", this.filteredSearch);
     }
   }
 };

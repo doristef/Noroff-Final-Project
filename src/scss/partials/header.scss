@@ -31,11 +31,17 @@
         z-index: 99;
         position: absolute;
         height: auto;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem;
         list-style: none;
-        &-item {
+        &-link {
             margin: 0;
-            padding: 0;
+            padding: 0.5rem;
+
+            &:hover {
+                background-color: $accentColor;
+                border-radius: 10px;
+                color: $quiteWhite !important;
+            }
         }
     }
 }
