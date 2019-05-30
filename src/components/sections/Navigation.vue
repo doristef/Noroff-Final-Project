@@ -75,16 +75,6 @@
           <!--- ADMIN NAVIGATION -->
           <ul class="[ navigation-list ]" v-else>
             <router-link
-              to="/admin/dash"
-              class="[ navigation-link ]"
-              exact-active-class="[ navigation-link-active ]"
-            >
-              <li class="[ navigation-list-item ]" @click="navClick()">
-                Dashboard
-              </li>
-            </router-link>
-
-            <router-link
               to="/admin/enquiries"
               class="[ navigation-link ]"
               exact-active-class="[ navigation-link-active ]"
@@ -111,6 +101,15 @@
             >
               <li class="[ navigation-list-item ]" @click="navClick()">
                 Add Establishment
+              </li>
+            </router-link>
+            <router-link
+              to="/accomodations"
+              class="[ navigation-link ]"
+              exact-active-class="[ navigation-link-active ]"
+            >
+              <li class="[ navigation-list-item ]" @click="navClick()">
+                See Establishments
               </li>
             </router-link>
           </ul>

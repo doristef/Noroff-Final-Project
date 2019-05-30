@@ -14,65 +14,169 @@
             <li v-for="error in form.errors" :key="error">{{ error }}</li>
           </ul>
         </div>
+        <!------
+      establishmentName Sunset Beach
+      establishmentEmail  info@sunsetbeach.com
+
+      imageUrl  https:\/\/images.unsplash.com\/photo-1439130490301-25e322d88054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80
+
+      price 85
+      establishmentId 18
+      googleLat 60.393388
+      googleLong  5.228720
+      description  Get ready for some amazing sunsets as you sip a cocktail and watch dolphins play in the harbour below.",
+      selfCatering  true
+      id
+
+----->
+
         <b-form
           ref="form"
           @submit.prevent="onSubmit"
           @reset="onReset"
           method="POST"
-          action="http://doristef.me/semester4/FinalProject/server/enquiry-success.php"
+          action="http://doristef.me/semester4/FinalProject/server/add-establishments-success.php"
         >
           <b-form-group
-            id="email"
-            label="Email address:"
-            label-for="input-1"
-            description="We'll never share your email with anyone else."
+            label="Establishment Name:"
+            label-for="establishmentName"
           >
             <b-form-input
-              name="email"
-              id="email"
-              v-model="form.email"
+              name="establishmentName"
+              id="establishmentName"
+              v-model="form.establishmentName"
+              type="text"
+              required
+              placeholder="Name of Establishment"
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group
+            label="Email address:"
+            label-for="email"
+            description="Direct email to the establishment."
+          >
+            <b-form-input
+              name="establishmentEmail"
+              id="establishmentEmail"
+              v-model="form.establishmentEmail"
               type="email"
               required
               placeholder="Enter email"
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group
-            id="input-group-2"
-            label="Your Name:"
-            label-for="clientName"
-          >
+          <b-form-group label="Image URL:" label-for="establishmentImage">
             <b-form-input
-              name="clientName"
-              id="clientName"
-              v-model="form.name"
+              name="imageUrl"
+              id="imageUrl"
+              v-model="form.establishmentImage"
+              type="url"
               required
-              placeholder="Enter name"
+              placeholder="Enter URL to image"
             ></b-form-input>
           </b-form-group>
 
           <b-form-group
-            id="input-group-3"
-            label="Check In / Check Out:"
-            label-for="input-3"
+            label="Price per Night:"
+            label-for="price"
+            class="[ d-inline-block ][ ml-2  mr-md-4 ]"
           >
-            <input type="hidden" name="checkin" :value="form.checkin" />
-            <input type="hidden" name="checkout" :value="form.checkout" />
-            <input
-              type="hidden"
-              name="establishment"
-              :value="form.establishment"
-            />
-            <HotelDatePicker
-              @confirm="applyDate"
-              @reset="cancelDate"
-              required
-              selectForward:true
-              seperator="to"
-              minNights="1"
-              format="DD-MM-YYYY"
-            />
+            <b-input-group>
+              <b-input-group-text slot="prepend">
+                <font-awesome-icon icon="dollar-sign" />
+              </b-input-group-text>
+              <b-form-input
+                name="price"
+                id="price"
+                v-model="form.price"
+                type="number"
+                style="max-width: 100px;"
+                required
+                step="0.01"
+                placeholder="Price"
+              ></b-form-input>
+            </b-input-group>
           </b-form-group>
+
+          <b-form-group
+            label="Maximum Guests:"
+            label-for="maxGuests"
+            class="[ d-inline-block ][ ml-2 ml-md-4 ]"
+          >
+            <b-input-group>
+              <b-input-group-text slot="prepend">
+                <font-awesome-icon icon="user-alt" />
+              </b-input-group-text>
+              <b-form-input
+                name="maxGuests"
+                id="maxGuests"
+                v-model="form.maxGuests"
+                type="number"
+                required
+                placeholder="Guests"
+                style="max-width: 100px;"
+              ></b-form-input>
+            </b-input-group>
+          </b-form-group>
+
+          <b-form-group label="Location:" label-for="googleLat, googleLong">
+            <b-form-input
+              name="googleLat"
+              id="googleLat"
+              v-model="form.googleLat"
+              type="number"
+              step="0.01"
+              required
+              placeholder="Enter Latitude Degrees"
+              class="[ d-inline-block ][ ml-2 mr-md-4 ]"
+              style="max-width: 40%;"
+            ></b-form-input>
+
+            <b-form-input
+              name="googleLong"
+              id="googleLong"
+              v-model="form.googleLong"
+              type="number"
+              step="0.01"
+              required
+              placeholder="Enter Longitude Degrees"
+              class="[ d-inline-block ][ ml-2 ml-md-4 ]"
+              style="max-width: 40%;"
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group label="Description:" label-for="description">
+            <b-form-textarea
+              name="description"
+              id="description"
+              required
+              v-model="form.description"
+              type="text"
+              placeholder="Enter Establishment Description"
+              rows="4"
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-form-group label="Self Catering:" label-for="selfcatering">
+            <b-form-radio
+              v-model="form.selfcatering"
+              name="selfCatering"
+              id="true"
+              :value="true"
+              >Yes</b-form-radio
+            >
+            <b-form-radio
+              v-model="form.selfcatering"
+              name="selfCatering"
+              id="false"
+              :value="false"
+              selected
+              >No</b-form-radio
+            >
+          </b-form-group>
+
+          <input type="hidden" name="id" :value="nextId.toString()" />
 
           <b-button type="submit" variant="primary">Send Enquiry</b-button>
           <b-button type="reset" variant="warning" class="[ ml-2 ]"
@@ -85,35 +189,83 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+/* Regex from http://emailregex.com/ */
+const emailRegex = RegExp(
+  // eslint-disable-next-line
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}.[0-9]{1,3}\.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+);
+
 export default {
   name: "addestablishment",
+  props: ["establishments"],
+  components: { FontAwesomeIcon },
   data() {
     return {
       form: {
-        name: "",
-        email: "",
-        checkin: "",
-        checkout: "",
-        establishment: "",
+        establishmentName: "",
+        establishmentEmail: "",
+        establishmentImage: "",
+        price: null,
+        maxGuests: null,
+        googleLat: null,
+        googleLong: null,
+        description: "",
+        selfcatering: false,
         errors: []
       }
     };
   },
+  computed: {
+    nextId() {
+      return this.establishments.length + 1;
+    }
+  },
   methods: {
     onSubmit() {
-      this.form.errors = [];
-      return this.$refs.form.submit();
+      if (
+        !emailRegex.test(this.form.establishmentEmail) ||
+        isNaN(this.form.maxGuests) ||
+        isNaN(this.form.price) ||
+        this.form.establishmentImage === "" ||
+        this.form.establishmentName === ""
+      ) {
+        this.form.errors = [];
+        if (this.form.establishmentName === "") {
+          this.form.errors.push("Named must be filled out.");
+        }
+        if (
+          this.form.email !== null &&
+          !emailRegex.test(this.form.establishmentEmail)
+        ) {
+          this.form.errors.push("Incorrect format of email.");
+        }
+        if (this.form.establishmentImage === "") {
+          this.form.errors.push("Image Url must be filled out.");
+        }
+        if (isNaN(this.form.price)) {
+          this.form.errors.push("Price must be a number.");
+        }
+        if (isNaN(this.form.maxGuests)) {
+          this.form.errors.push("Maximum Guests must be a number.");
+        }
+      } else {
+        this.form.errors = [];
+        return this.$refs.form.submit();
+      }
     },
     onReset() {
       // Reset our form values
-      this.form.email = "";
-      this.form.name = "";
-      this.form.checkin = "";
-      this.form.checkout = "";
+      this.form.establishmentName = "";
+      this.form.establishmentEmail = "";
+      this.form.establishmentImage = "";
+      this.form.price = null;
+      this.form.maxGuests = null;
+      this.form.googleLat = null;
+      this.form.googleLong = null;
+      this.form.description = "";
+      this.form.selfcatering = false;
     }
-  },
-  mounted() {
-    console.log();
   }
 };
 </script>

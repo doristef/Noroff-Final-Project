@@ -1,0 +1,14 @@
+.admin {
+    &-splitter {
+        width: 100%; 
+        border-radius: 10px;
+        background-color: $accentColor !important;
+        margin-top: 6rem;
+
+        &-heading {
+            color: $quiteWhite;
+            font-weight: 700;
+            padding: 0.2rem;
+        }
+    }
+}

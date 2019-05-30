@@ -70,7 +70,7 @@ export default {
 
         const sessionID = "holidazeAdmin";
         sessionStorage.setItem("AuthToken", sessionID);
-        this.$router.push("/admin/dash");
+        this.$router.push("/admin/messages");
       }
     },
     changeState() {

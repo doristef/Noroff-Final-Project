@@ -57,16 +57,6 @@ const router = new Router({
       component: Login
     },
     {
-      path: "/admin/dash",
-      components: {
-        default: Enquiries,
-        helper: Messages
-      },
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: "/admin/enquiries",
       component: Enquiries,
       meta: {

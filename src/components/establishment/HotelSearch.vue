@@ -8,25 +8,27 @@
         >Back</b-button
       >
     </b-row>
-    <b-row
-      align-h="center"
-      v-if="!filteredSearch.length || this.search === null"
-    >
-      <b-col cols="12" md="4">
-        <h2>No match</h2>
-        <p v-if="this.search !== null">
-          Nothing found that matches search string: <br />
-        </p>
-        <p v-else>No search typed!</p>
-        <h4
-          class="[ card-text-bold ][ mt-4 mb-3 ml-4 ]"
-          v-if="this.search !== null"
-        >
-          {{ this.$route.params.search }}
-        </h4>
+    <b-row>
+      <b-col>
+        <Search />
       </b-col>
     </b-row>
-    <b-row align-h="center" v-else>
+    <b-row align-h="center">
+      <b-col cols="12" md="4">
+        <p v-if="this.search === null">No search typed!</p>
+        <p v-if="this.search !== null && this.filteredSearch.length < 1">
+          Nothing found that matches search string: <br />
+        </p>
+
+        <div class="[ mt-4 mb-3 ml-4 ]" v-else>
+          <p class="[ d-inline-block ]">Search String:</p>
+          <h4 class="[ d-inline-block ][ card-text-bold ][ ml-3 ]">
+            {{ this.$route.params.search }}
+          </h4>
+        </div>
+      </b-col>
+    </b-row>
+    <b-row align-h="center">
       <!--- CARDS --->
       <router-link
         v-for="establishment in filteredSearch"
@@ -75,21 +77,26 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import Search from "./../sections/Search.vue";
 
 export default {
   name: "establishmentSearch",
-  components: { FontAwesomeIcon },
+  components: { FontAwesomeIcon, Search },
   props: ["establishments", "search"],
   computed: {
     filteredSearch() {
-      return this.establishments.filter(item => {
-        return (
-          item.establishmentName
-            .toLowerCase()
-            .match(this.$route.params.search.toLowerCase()) ||
-          parseInt(item.price) <= this.$route.params.search
-        );
-      });
+      if (this.search !== null) {
+        return this.establishments.filter(item => {
+          return (
+            item.establishmentName
+              .toLowerCase()
+              .match(this.$route.params.search.toLowerCase()) ||
+            parseInt(item.price) <= this.$route.params.search
+          );
+        });
+      } else {
+        return this.establishments;
+      }
     }
   }
 };
