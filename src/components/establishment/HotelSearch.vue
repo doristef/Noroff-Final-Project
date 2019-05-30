@@ -10,7 +10,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <Search />
+        <Search :rowClass="this.class" :establishments="this.establishments" />
       </b-col>
     </b-row>
     <b-row align-h="center">
@@ -20,9 +20,15 @@
           Nothing found that matches search string: <br />
         </p>
 
-        <div class="[ mt-4 mb-3 ml-4 ]" v-else>
+        <div class="[ mt-4 mb-3 ml-4 ]">
           <p class="[ d-inline-block ]">Search String:</p>
-          <h4 class="[ d-inline-block ][ card-text-bold ][ ml-3 ]">
+          <h4
+            class="[ d-inline-block ][ card-text-bold ][ ml-3 ]"
+            v-if="this.$route.params.search === 'null'"
+          >
+            Nothing
+          </h4>
+          <h4 class="[ d-inline-block ][ card-text-bold ][ ml-3 ]" v-else>
             {{ this.$route.params.search }}
           </h4>
         </div>
@@ -82,7 +88,12 @@ import Search from "./../sections/Search.vue";
 export default {
   name: "establishmentSearch",
   components: { FontAwesomeIcon, Search },
-  props: ["establishments", "search"],
+  props: ["establishments"],
+  data() {
+    return {
+      search: this.$route.params.search
+    };
+  },
   computed: {
     filteredSearch() {
       if (this.search !== null) {

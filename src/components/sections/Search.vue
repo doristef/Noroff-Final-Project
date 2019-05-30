@@ -31,7 +31,7 @@
             <datalist
               id="establishments"
               class="[ form-control ][ search-dropdown ]"
-              v-if="search && filteredSearch.length"
+              v-if="this.search && this.filteredSearch.length"
             >
               <option
                 :tabindex="2 + i"
