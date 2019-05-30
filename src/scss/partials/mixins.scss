@@ -14,3 +14,39 @@
     -webkit-border-radius: $radius; 
     -moz-border-radius: $radius;   
 }
+
+//** Tranisition **//
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+  }
+
+//** Tranisition **//
+@mixin transform($args...) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+  }
+
+//** Tranisition **//
+@mixin transform-origin($args...) {
+    -webkit-transform-origin: $args;
+    -moz-transform-origin: $args;
+    -ms-transform-origin: $args;
+    -o-transform-origin: $args;
+    transform-origin: $args;
+  }
+
+//** Opacity **//
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+// box-shadow:
+// text-shadow:

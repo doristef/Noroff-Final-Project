@@ -22,7 +22,7 @@
               - You can search by name or price.
             </b-form-text>
             <b-form-input
-              autocomplete="off"
+              autocomplete="false"
               id="search"
               type="text"
               size="lg"
@@ -42,12 +42,9 @@
                 v-for="(item, i) in filteredSearch"
                 :key="i"
               >
-                <option
-                  :tabindex="2 + i"
-                  class="[ search-dropdown-link ][ my-2 ]"
-                >
+                <div :tabindex="2 + i" class="[ search-dropdown-link ][ my-2 ]">
                   {{ item.establishmentName }}
-                </option>
+                </div>
               </router-link>
             </datalist>
           </b-form-group>

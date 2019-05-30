@@ -53,11 +53,12 @@
 <script>
 /* Axios and apiUrl */
 import axios from "axios";
-const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking Cross-Origin request
+const corsURL = ""; // Needed for Unblocking Cross-Origin request - https://cors-anywhere.herokuapp.com/
 const apiURL = "http://doristef.me/semester4/FinalProject/server/contact.json"; // API to fetch from
 const apiConfig = {
   headers: { "Content-Type": "application/json" },
-  responseType: "json"
+  responseType: "json",
+  AccessControlAllowOrigin: "https://doristef.me"
 };
 
 export default {

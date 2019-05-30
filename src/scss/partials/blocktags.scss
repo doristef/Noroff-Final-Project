@@ -28,7 +28,7 @@ body {
 a {
     &:link { 
         color: $gray; 
-        transition: color 0.3s ease;
+        @include transition(color 0.3s ease);
     }
     
     &:visited {
@@ -44,6 +44,6 @@ a {
     &:hover {
         color: $accentColor;
         text-decoration: none;
-        transition: color 0.3s ease;
+        @include transition(color 0.3s ease);
     }
 }
