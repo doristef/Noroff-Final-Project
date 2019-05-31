@@ -28,6 +28,16 @@
             font-weight: 600;
             margin-bottom: 0.25rem;
 
+            &-link:hover {
+                color: $mainColor !important;
+            }
+        }
+        &-subheader {
+            font-family: 'Montserrat', sans-serif;
+            color: $accentColor !important;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
         }
     }
     &-text {

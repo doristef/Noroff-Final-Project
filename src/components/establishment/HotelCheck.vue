@@ -9,65 +9,16 @@
       >
     </b-row>
     <b-row align-h="center">
-      <!--- CARDS --->
-      <b-card
-        no-body
-        class="[ overflow-hidden ][ m-3 ]"
-        style="max-width: 700px;"
-        v-for="establishment in filteredId"
-        :key="establishment.id"
-      >
-        <b-row no-gutters>
-          <b-col md="6">
-            <b-card-img
-              :src="establishment.imageUrl"
-              :alt="establishment.establishmentName"
-              class="[ rounded-0 ][ card-img-side ]"
-            ></b-card-img>
-          </b-col>
-          <b-col md="6">
-            <b-card-title class="[ card-hotel-header ][ ml-2 mt-2 ]">
-              {{
-                (form.establishment = establishment.establishmentName)
-              }}</b-card-title
-            >
-
-            <b-card-body align-v="bottom">
-              <p class=" d-none d-md-block ">
-                {{ establishment.description }}
-              </p>
-              <font-awesome-icon
-                icon="user-alt"
-                size="lg"
-                class="[ ml-2 mr-2 ]"
-              />
-              <span class="[ card-footer-text ]">{{
-                establishment.maxGuests
-              }}</span>
-
-              <div class="[ float-right ][ mr-2 ]">
-                <font-awesome-icon
-                  icon="dollar-sign"
-                  size="lg"
-                  class="[ mr-2 ]"
-                />
-                <span class="[ card-footer-text ]">{{
-                  establishment.price
-                }}</span>
-              </div>
-            </b-card-body>
-          </b-col>
-        </b-row>
-      </b-card>
-
-      <!--- CARDS END -->
-    </b-row>
-    <b-row align-h="center">
       <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
-        <h1 class="[ card-hotel-header ][ mt-5 mb-4 ]">Send Enquiry</h1>
+        <h1 class="[ card-hotel-header ][ my-2 ]">Send Enquiry for:</h1>
+        <div v-for="establishment in filteredId" :key="establishment.id">
+          <h5 class="[ card-hotel-subheader ][ my-2 ml-3 ]">
+            {{ establishment.establishmentName }}
+          </h5>
+        </div>
       </b-col>
     </b-row>
-    <b-row class="[ mb-5 pb150 ]" align-h="center">
+    <b-row class="[ mb-5 ]" align-h="center">
       <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
         <div v-if="form.errors.length">
           <ul>
@@ -141,6 +92,59 @@
         </b-form>
       </b-col>
     </b-row>
+    <!--- CARDS --->
+    <b-row align-h="center" class="[ my-3 ][ pb150 ]">
+      <b-card
+        no-body
+        class="[ overflow-hidden ][ m-2 ]"
+        style="max-width: 700px;"
+        v-for="establishment in filteredId"
+        :key="establishment.id"
+      >
+        <b-row no-gutters>
+          <b-col md="6">
+            <b-card-img
+              :src="establishment.imageUrl"
+              :alt="establishment.establishmentName"
+              class="[ rounded-0 ][ card-img-side ]"
+            ></b-card-img>
+          </b-col>
+          <b-col md="6">
+            <b-card-title class="[ card-hotel-header ][ ml-2 mt-2 ]">
+              {{
+                (form.establishment = establishment.establishmentName)
+              }}</b-card-title
+            >
+
+            <b-card-body align-v="bottom">
+              <p class=" d-none d-md-block ">
+                {{ establishment.description }}
+              </p>
+              <font-awesome-icon
+                icon="user-alt"
+                size="lg"
+                class="[ ml-2 mr-2 ]"
+              />
+              <span class="[ card-footer-text ]">{{
+                establishment.maxGuests
+              }}</span>
+
+              <div class="[ float-right ][ mr-2 ]">
+                <font-awesome-icon
+                  icon="dollar-sign"
+                  size="lg"
+                  class="[ mr-2 ]"
+                />
+                <span class="[ card-footer-text ]">{{
+                  establishment.price
+                }}</span>
+              </div>
+            </b-card-body>
+          </b-col>
+        </b-row>
+      </b-card>
+    </b-row>
+    <!--- CARDS END -->
   </b-container>
 </template>
 

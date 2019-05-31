@@ -22,7 +22,7 @@
               - You can search by name or price.
             </b-form-text>
             <b-form-input
-              autocomplete="false"
+              autocomplete="off"
               id="search"
               type="text"
               size="lg"
@@ -98,7 +98,7 @@ export default {
 
   methods: {
     onSubmit() {
-      this.$router.push("/accomodations/search/" + this.search);
+      this.$router.push("/accomodations/search/" + this.search + "/");
     },
     onChange() {
       this.$store.commit("searchString", this.search);
