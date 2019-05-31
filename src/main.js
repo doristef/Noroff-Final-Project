@@ -15,7 +15,6 @@ Vue.use(VueLodash, options);
 /* SASS - SCSS */
 import BootstrapVue from "bootstrap-vue";
 import "./scss/styles.scss";
-import "animate.css/animate.css";
 Vue.use(BootstrapVue);
 
 /* FontAwesome - FortAwesome  */

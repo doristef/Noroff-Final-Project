@@ -1,6 +1,17 @@
 {
   "name": "holidaze",
-  "version": "0.1.0",
+  "version": "1.1.0",
+  "author": "Halldór - doristef.me",
+  "description": "Holidaze - Tourism Agency in Bergen, Norway. Find your Hotel, B&B or Guesthouse.",
+  "keywords": [
+    "Holidaze",
+    "Tourism",
+    "Bergen",
+    "B&B",
+    "Travel"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/doristef/Noroff-Final-Project",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,14 +26,12 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "@northwalker/vue-hotel-datepicker": "^2.0.2",
-    "animate.css": "^3.7.0",
     "aos": "^3.0.0-beta.6",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.0-rc.20",
+    "bootstrap-vue": "^2.0.0-rc.21",
     "core-js": "^2.6.8",
     "vue": "^2.6.10",
-    "vue-awesome": "^3.5.3",
     "vue-lodash": "^2.0.2",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
