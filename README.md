@@ -58,7 +58,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Live
 ---
 
-A live version is available at http://doristef.me/semester4/final-project/
+A live version is available at http://doristef.me/semester4/FinalProject/
 
 
 ### Thanks and have fun!
