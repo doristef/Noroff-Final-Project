@@ -1,4 +1,13 @@
 .card {
+
+    &-bg-gray {
+        border-radius: 10px;
+        background-color:  darken($quiteWhite, 3%);
+        @media only screen and (max-device-width: $medScreen){
+            background-color: transparent;
+        }
+
+    }
     &-button {
         color: $quiteWhite !important;
     }
@@ -27,6 +36,9 @@
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
+            &-bigger {
+                font-size: 1.5rem;
+            }
         }
         &-bigger {
             font-size: 1.1rem;

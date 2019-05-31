@@ -1,7 +1,7 @@
 <template>
   <b-container fluid class="[ header ][ vh100 ]">
     <Search
-      :rowClass="this.class"
+      rowClass="vh100"
       :establishments="this.establishments"
       :button="true"
       :predict="true"
@@ -16,11 +16,6 @@ import Search from "./Search.vue";
 export default {
   name: "pageHeader",
   props: ["establishments"],
-  components: { Search },
-  data() {
-    return {
-      class: "vh100"
-    };
-  }
+  components: { Search }
 };
 </script>

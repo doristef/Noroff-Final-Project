@@ -19,8 +19,12 @@ Vue.use(BootstrapVue);
 
 /* FontAwesome - FortAwesome  */
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserAlt, faDollarSign } from "@fortawesome/free-solid-svg-icons";
-library.add(faUserAlt, faDollarSign);
+import {
+  faUserAlt,
+  faDollarSign,
+  faUtensils
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faUserAlt, faDollarSign, faUtensils);
 
 new Vue({
   Router,
