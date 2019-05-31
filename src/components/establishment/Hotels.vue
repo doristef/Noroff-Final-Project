@@ -13,7 +13,7 @@
           :img-alt="establishment.establishmentName"
           img-top
           tag="article"
-          class="[ card-hotel ][ m-4 ]"
+          class="[ card-hotel ][ mx-2 my-4 ]"
         >
           <b-card-sub-title>
             {{ establishment.establishmentEmail }}

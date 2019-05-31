@@ -17,18 +17,17 @@
 @import './partials/button.scss';
 
 /****** OVERFLOW SEARCH ***********
+
 * {
     outline: 1px solid red;
     opacity: 1 !important; visibility: visible !important;
 }
 ****** / OVERFLOW SEARCH ***********/
 
-
 * {
     box-sizing: border-box;
+    max-width: 100vw;
 }
-
-
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
@@ -38,7 +37,6 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
 }
 .w100 {
-    width: 100%;
     min-width: 100%;
 }
 

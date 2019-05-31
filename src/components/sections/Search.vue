@@ -32,7 +32,7 @@
               list="establishments"
               tabindex="1"
             />
-            <datalist
+            <div
               id="establishments"
               class="[ form-control ][ search-dropdown ]"
               v-if="predict && this.search && this.filteredSearch.length"
@@ -46,7 +46,7 @@
                   {{ item.establishmentName }}
                 </div>
               </router-link>
-            </datalist>
+            </div>
           </b-form-group>
           <div class="[ search-button ][ mt-2 ]">
             <b-button

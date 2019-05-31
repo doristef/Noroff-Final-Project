@@ -9,7 +9,7 @@
         max-width: 28rem;
         width: 28rem;
         @media only screen and (max-device-width: $medScreen){
-            max-width: 22rem;
+            max-width: 95%;
             width: 22rem;
         }
         &-header {
@@ -50,8 +50,8 @@
             height: 350px;
             
             @media only screen and (max-device-width: $medScreen){
-                max-height: 250px;
-                height: 250px;
+                max-height: 200px;
+                height: 200px;
             }
             &-small {
                 max-height: 200px;

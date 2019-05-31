@@ -79,8 +79,8 @@
                 display: none;
             }
             position: absolute;
-            bottom: 15vh;
-            right: 10px;
+            bottom: 20vh;
+            right: 15px;
             float: right;
         }
     }
@@ -98,11 +98,12 @@
             @include opacity(0);
             display: none;
         }
+        
         float: right;
         width: 50px;
         height: 40px;
         margin: 13px 15px 4px 4px;
-        @include transform(otate(0deg));
+        @include transform(rotate(0deg));
         @include transition(all .55s ease-in-out);
         cursor: pointer;
 
