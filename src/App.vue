@@ -14,7 +14,7 @@ import router from "./router.js";
 
 /* FETCH All Establishments */
 import axios from "axios";
-const corsURL = "https://cors-anywhere.herokuapp.com/"; // Needed for Unblocking Cross-Origin request -
+const corsURL = ""; // Needed for Unblocking Cross-Origin request - https://cors-anywhere.herokuapp.com/
 const apiURL =
   "http://doristef.me/semester4/FinalProject/server/establishments.json"; // API to fetch from
 const apiConfig = {

@@ -219,9 +219,6 @@ export default {
       this.form.checkin = "";
       this.form.checkout = "";
     }
-  },
-  mounted() {
-    console.log();
   }
 };
 </script>

@@ -1,6 +1,6 @@
 .header {
     background-color: $gray; // Fallback
-    background-image: url('../assets/leonard-rb-1281440-unsplash.jpg');
+    background-image: url('../assets/michael-fousert-1205294-unsplash.jpg');
     background-position: top center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -8,7 +8,20 @@
     min-height: 100vh;
     margin: 0;
     margin-top: -$navHeight;
+
+
+}    
+//** Background Images for random background header  **/
+$urls: ( 1: 'leonard-rb-1281440-unsplash', 2: 'michael-fousert-1205294-unsplash', 3: 'ignacio-ceballos-449330-unsplash', 4: 'michael-fousert-1205288-unsplash');
+
+@each $i, $url in $urls {
+    .header-#{$i} {
+        background-image: url('../assets/#{$url}.jpg');
+    }
 }
+
+
+
 
 .search {
     position: relative;

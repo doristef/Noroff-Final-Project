@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid class="[ header ][ vh100 ]">
+  <b-container fluid class="[ header ][ vh100 ]" :class="'[ ' + header + ' ]'">
     <Search
       rowClass="vh100"
       :establishments="this.establishments"
@@ -13,9 +13,15 @@
 
 <script>
 import Search from "./Search.vue";
+
 export default {
   name: "pageHeader",
   props: ["establishments"],
-  components: { Search }
+  components: { Search },
+  computed: {
+    header: function() {
+      return "header-" + Math.floor(Math.random() * 4 + 1);
+    }
+  }
 };
 </script>
