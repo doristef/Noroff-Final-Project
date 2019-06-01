@@ -11,7 +11,8 @@
 
 
 }    
-//** Background Images for random background header  **/
+//** Background Images for random background header  **//
+//** Images from Unsplash.com **//
 $urls: ( 1: 'leonard-rb-1281440-unsplash', 2: 'michael-fousert-1205294-unsplash', 3: 'ignacio-ceballos-449330-unsplash', 4: 'michael-fousert-1205288-unsplash');
 
 @each $i, $url in $urls {
@@ -19,9 +20,6 @@ $urls: ( 1: 'leonard-rb-1281440-unsplash', 2: 'michael-fousert-1205294-unsplash'
         background-image: url('../assets/#{$url}.jpg');
     }
 }
-
-
-
 
 .search {
     position: relative;

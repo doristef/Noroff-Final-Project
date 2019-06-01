@@ -18,10 +18,10 @@
         :key="establishment.id"
       >
         <b-row align-h="around">
-          <b-col cols="12" class="[ text-center ][ p-2 ][ bg-gray ]">
+          <b-col cols="12" class="[ text-center ][ p-2 ][ card-bg-gray ]">
             <img
               :src="establishment.imageUrl"
-              alt="establishment.establishmentName"
+              :alt="establishment.establishmentName"
               style="max-width: 100%;"
             />
           </b-col>

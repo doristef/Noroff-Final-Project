@@ -12,7 +12,7 @@
           @reset="onReset"
           ref="form"
           method="POST"
-          action="http://localhost/holidaze/server/contact-success.php"
+          action="http://doristef.me/semester4/FinalProject/server/contact-success.php"
         >
           <b-form-group
             id="input-group-1"
