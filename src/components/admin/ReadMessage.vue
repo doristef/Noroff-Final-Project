@@ -1,9 +1,14 @@
 <template>
   <b-container class="[ mt-2 mb-3 ][ vh100 ]">
     <b-row align-h="center" class="[ admin-splitter ][ mb-2 ]">
-      <div class="[ my-2 ]">
-        <h3 class="[ admin-splitter-heading ]">Messages</h3>
-      </div>
+      <b-col align-self="center" class="[ mt-2 mb-1 ][ text-center ]">
+        <h3 class="[ admin-splitter-heading ]">
+          Messages
+          <b-badge pill variant="light" class="[ admin-pill ]">
+            {{ messages.length }}
+          </b-badge>
+        </h3>
+      </b-col>
     </b-row>
     <b-row align-h="center">
       <div v-if="loading"><h1>Loading...</h1></div>

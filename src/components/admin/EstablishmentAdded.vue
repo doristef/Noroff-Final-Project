@@ -21,9 +21,16 @@
     <b-row align-h="center" class="[ my-2 ]">
       <b-col cols="10" md="6" class="[ text-center ]">
         <p>
-          A link to the establishment will be available in about
-          <strong class="[ thankyou-bold ]">15min</strong>.<br />
+          Here is a
+          <router-link :to="'/accomodations/' + this.$route.params.id">
+            <strong class="[ thankyou-bold ]">link</strong>
+          </router-link>
+          to your new establishment.<br />
         </p>
+      </b-col>
+    </b-row>
+    <b-row align-h="center" class="[ my-2 ]">
+      <b-col cols="12" md="6" class="[ text-center ]">
         <p>
           <router-link :to="'/accomodations/' + this.$route.params.id">
             <strong class="[ thankyou-bold ]"
@@ -33,6 +40,13 @@
             >
           </router-link>
         </p>
+      </b-col>
+    </b-row>
+    <b-row align-h="center" class="[ my-2 ]">
+      <b-col cols="10" md="6" class="[ text-center ]">
+        <router-link to="/admin/messages">
+          <b-button variant="primary"> Back to Admin Page </b-button>
+        </router-link>
       </b-col>
     </b-row>
   </b-container>

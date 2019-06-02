@@ -62,8 +62,7 @@
             </p>
             <p v-else>
               Unfortunately this establishment does
-              <strong class="[ card-text-bold ]"
-                >not offers self catering</strong
+              <strong class="[ card-text-bold ]">not offer self catering</strong
               >.
             </p>
             <h3>Location</h3>

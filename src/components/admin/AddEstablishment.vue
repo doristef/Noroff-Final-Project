@@ -182,9 +182,14 @@
             >
           </b-form-group>
 
-          <input type="hidden" name="id" :value="nextId.toString()" />
+          <b-form-group label="ID:" label-for="id">
+            <input type="hidden" name="id" :value="nextId.toString()" />
+            <div class="[ admin-bold ]">{{ nextId.toString() }}</div>
+          </b-form-group>
 
-          <b-button type="submit" variant="primary">Send Enquiry</b-button>
+          <b-button type="submit" variant="primary"
+            >Add this New Establishment</b-button
+          >
           <b-button type="reset" variant="warning" class="[ ml-2 ]"
             >Reset</b-button
           >

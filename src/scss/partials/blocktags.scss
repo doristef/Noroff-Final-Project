@@ -56,3 +56,11 @@ a {
         @include transition(color 0.3s ease);
     }
 }
+
+//** Paragraphs **//
+p {
+    max-width: 98%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
