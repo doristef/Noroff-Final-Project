@@ -1,0 +1,12 @@
+.thankyou {
+    &-heading {
+        color: $accentColor !important;
+        font-size: 5rem;
+    }
+
+    &-bold {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+}

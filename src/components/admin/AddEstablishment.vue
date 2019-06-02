@@ -121,29 +121,35 @@
           </b-form-group>
 
           <b-form-group label="Location:" label-for="googleLat, googleLong">
-            <b-form-input
-              name="googleLat"
-              id="googleLat"
-              v-model="form.googleLat"
-              type="number"
-              step="0.01"
-              required
-              placeholder="Enter Latitude Degrees"
-              class="[ d-inline-block ][ ml-2 mr-md-4 ]"
+            <b-input-group style="max-width: 40%;" class="[ ml-2 ]">
+              <b-input-group-text slot="append">
+                &deg;
+              </b-input-group-text>
+              <b-form-input
+                name="googleLat"
+                id="googleLat"
+                v-model="form.googleLat"
+                type="text"
+                required
+                placeholder="Latitude Degrees"
+              ></b-form-input>
+            </b-input-group>
+            <b-input-group
               style="max-width: 40%;"
-            ></b-form-input>
-
-            <b-form-input
-              name="googleLong"
-              id="googleLong"
-              v-model="form.googleLong"
-              type="number"
-              step="0.01"
-              required
-              placeholder="Enter Longitude Degrees"
-              class="[ d-inline-block ][ ml-2 ml-md-4 ]"
-              style="max-width: 40%;"
-            ></b-form-input>
+              class="[ ml-2 mt-2 mt-md-3 ]"
+            >
+              <b-input-group-text slot="append">
+                &deg;
+              </b-input-group-text>
+              <b-form-input
+                name="googleLong"
+                id="googleLong"
+                v-model="form.googleLong"
+                type="text"
+                required
+                placeholder="Longitude Degrees"
+              ></b-form-input>
+            </b-input-group>
           </b-form-group>
 
           <b-form-group label="Description:" label-for="description">
@@ -227,6 +233,8 @@ export default {
         !emailRegex.test(this.form.establishmentEmail) ||
         isNaN(this.form.maxGuests) ||
         isNaN(this.form.price) ||
+        isNaN(this.form.googleLat) ||
+        isNaN(this.form.googleLong) ||
         this.form.establishmentImage === "" ||
         this.form.establishmentName === ""
       ) {
@@ -245,6 +253,12 @@ export default {
         }
         if (isNaN(this.form.price)) {
           this.form.errors.push("Price must be a number.");
+        }
+        if (isNaN(this.form.googleLat)) {
+          this.form.errors.push("Latitude must be a number.");
+        }
+        if (isNaN(this.form.googleLong)) {
+          this.form.errors.push("Longitude must be a number.");
         }
         if (isNaN(this.form.maxGuests)) {
           this.form.errors.push("Maximum Guests must be a number.");

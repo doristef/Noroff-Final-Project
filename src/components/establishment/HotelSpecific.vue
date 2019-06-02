@@ -28,7 +28,9 @@
         </b-row>
         <b-row align-h="around">
           <b-col cols="12" md="6" class="[ text-left ][ p-2 ]">
-            <h1>{{ establishment.establishmentName }}</h1>
+            <h1 class="[ card-heading ]">
+              {{ establishment.establishmentName }}
+            </h1>
           </b-col>
           <b-col
             cols="12"
@@ -47,18 +49,25 @@
         <b-row align-h="around">
           <b-col cols="12" md="6" class="[ text-left ]">
             <h3>Description</h3>
-            <p>
+            <p class="[ ml-1 ml-md-2 ]">
               {{ establishment.description }}
             </p>
             <h3>Self Catering</h3>
-            <p v-if="establishment.selfCatering">
-              This establishment offers self catering.
+            <p
+              class="[ ml-1 ml-md-2 ]"
+              v-if="establishment.selfCatering === 'true'"
+            >
+              This establishment
+              <strong class="[ card-text-bold ]">offers self catering</strong>.
             </p>
             <p v-else>
-              Unfortunately this establishment does not offers self catering.
+              Unfortunately this establishment does
+              <strong class="[ card-text-bold ]"
+                >not offers self catering</strong
+              >.
             </p>
             <h3>Location</h3>
-            <div>
+            <div class="[ ml-1 ml-md-2 ]">
               <Location
                 :latitude="establishment.googleLat"
                 :longitude="establishment.googleLong"
@@ -96,7 +105,7 @@
             </div>
             <div
               class="[ my-2 mx-3 mx-md-1 ][ text-center ][ d-inline d-md-block ]"
-              v-if="establishment.selfCatering"
+              v-if="establishment.selfCatering === 'true'"
             >
               <font-awesome-icon icon="utensils" size="2x" class="[ mr-2 ]" />
             </div>

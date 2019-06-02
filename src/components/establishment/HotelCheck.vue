@@ -101,47 +101,49 @@
         v-for="establishment in filteredId"
         :key="establishment.id"
       >
-        <b-row no-gutters>
-          <b-col md="6">
-            <b-card-img
-              :src="establishment.imageUrl"
-              :alt="establishment.establishmentName"
-              class="[ rounded-0 ][ card-img-side ]"
-            ></b-card-img>
-          </b-col>
-          <b-col md="6">
-            <b-card-title class="[ card-hotel-header ][ ml-2 mt-2 ]">
-              {{
-                (form.establishment = establishment.establishmentName)
-              }}</b-card-title
-            >
+        <router-link :to="'/accomodations/' + establishment.id">
+          <b-row no-gutters>
+            <b-col md="6">
+              <b-card-img
+                :src="establishment.imageUrl"
+                :alt="establishment.establishmentName"
+                class="rounded-0"
+              ></b-card-img>
+            </b-col>
+            <b-col md="6">
+              <b-card-title class="[ card-hotel-header ][ ml-2 mt-2 ]">
+                {{
+                  (form.establishment = establishment.establishmentName)
+                }}</b-card-title
+              >
 
-            <b-card-body align-v="bottom">
-              <p class=" d-none d-md-block ">
-                {{ establishment.description }}
-              </p>
-              <font-awesome-icon
-                icon="user-alt"
-                size="lg"
-                class="[ ml-2 mr-2 ]"
-              />
-              <span class="[ card-footer-text ]">{{
-                establishment.maxGuests
-              }}</span>
-
-              <div class="[ float-right ][ mr-2 ]">
+              <b-card-body align-v="bottom">
+                <p class=" d-none d-md-block ">
+                  {{ establishment.description }}
+                </p>
                 <font-awesome-icon
-                  icon="dollar-sign"
+                  icon="user-alt"
                   size="lg"
-                  class="[ mr-2 ]"
+                  class="[ ml-2 mr-2 ]"
                 />
                 <span class="[ card-footer-text ]">{{
-                  establishment.price
+                  establishment.maxGuests
                 }}</span>
-              </div>
-            </b-card-body>
-          </b-col>
-        </b-row>
+
+                <div class="[ float-right ][ mr-2 ]">
+                  <font-awesome-icon
+                    icon="dollar-sign"
+                    size="lg"
+                    class="[ mr-2 ]"
+                  />
+                  <span class="[ card-footer-text ]">{{
+                    establishment.price
+                  }}</span>
+                </div>
+              </b-card-body>
+            </b-col>
+          </b-row>
+        </router-link>
       </b-card>
     </b-row>
     <!--- CARDS END -->

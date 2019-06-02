@@ -13,6 +13,7 @@
 @import './partials/frontpage.scss';
 @import './partials/footer.scss';
 @import './partials/admin.scss';
+@import './partials/thankyou.scss';
 @import './partials/card.scss';
 @import './partials/button.scss';
 
@@ -23,15 +24,6 @@
     opacity: 1 !important; visibility: visible !important;
 }
 ****** / OVERFLOW SEARCH ***********/
-
-* {
-    box-sizing: border-box;
-    max-width: 100vw;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-}
 
 .vh100 {
     min-height: 100vh;

@@ -14,6 +14,7 @@ import Login from "./components/admin/Login.vue";
 import Enquiries from "./components/admin/ReadEnquiries.vue";
 import Messages from "./components/admin/ReadMessage.vue";
 import AddEstablishment from "./components/admin/AddEstablishment.vue";
+import EstablishmentAdded from "./components/admin/EstablishmentAdded.vue";
 
 Vue.use(Router);
 
@@ -73,6 +74,13 @@ const router = new Router({
     {
       path: "/admin/addestablishment",
       component: AddEstablishment,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/admin/establishmentadded/:id",
+      component: EstablishmentAdded,
       meta: {
         requiresAuth: true
       }

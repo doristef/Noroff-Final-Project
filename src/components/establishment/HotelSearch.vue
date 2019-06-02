@@ -3,7 +3,7 @@
     <b-row>
       <b-button
         variant="outline-primary"
-        class="[ my-2 ml-3 ml-md-1 ]"
+        class="[ my-5 my-md-2 ml-3 ml-md-1 ]"
         @click="$router.go(-1)"
         >Back</b-button
       >
@@ -22,7 +22,7 @@
     <b-row align-h="center">
       <b-col cols="12" md="4">
         <p v-if="this.search === null">No search typed!</p>
-        <p v-if="this.search !== null && this.filteredResults.length < 1">
+        <p v-if="this.search !== null && this.filteredSearch.length < 1">
           Nothing found that matches search string: <br />
         </p>
 
@@ -44,7 +44,7 @@
       <b-col cols="12" md="4">
         <!--- CARDS --->
         <router-link
-          v-for="establishment in filteredResults"
+          v-for="establishment in filteredSearch"
           :key="establishment.id"
           :to="'/accomodations/' + establishment.id"
         >
@@ -92,12 +92,27 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Search from "./../sections/Search.vue";
-import { mapState } from "vuex";
 
 export default {
   name: "establishmentSearch",
   components: { FontAwesomeIcon, Search },
   props: ["establishments"],
-  computed: mapState(["search", "filteredResults"])
+  data() {
+    return {
+      search: this.$route.params.search
+    };
+  },
+  computed: {
+    filteredSearch() {
+      return this.establishments.filter(item => {
+        return (
+          item.establishmentName
+            .toLowerCase()
+            .match(this.search.toLowerCase()) ||
+          parseInt(item.price) <= this.search
+        );
+      });
+    }
+  }
 };
 </script>

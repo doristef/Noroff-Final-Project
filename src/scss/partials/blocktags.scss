@@ -1,5 +1,10 @@
 //** GENERAL TAGS **//
 
+* {
+    box-sizing: border-box;
+    max-width: 100vw;
+}
+
 body {
     background-color: $quiteWhite;
     font-family: 'Lato', sans-serif;
@@ -18,10 +23,14 @@ body {
 @each $heading, $size in $headings {
     #{$heading}, .#{$heading} {
         @include fontRem( $size );
-        font-family: $headingFontWeight;
+        font-family: $headingFont;
         color: $gray;
         font-weight: $headingFontWeight;
     }
+}
+
+.h1, h1 {
+    font-family: $headingFonth1;
 }
 
 //** LINK **//
