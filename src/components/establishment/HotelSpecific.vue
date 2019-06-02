@@ -22,7 +22,7 @@
             <img
               :src="establishment.imageUrl"
               :alt="establishment.establishmentName"
-              style="max-width: 100%;"
+              style="max-width: 100%; max-height: 550px;"
             />
           </b-col>
         </b-row>
