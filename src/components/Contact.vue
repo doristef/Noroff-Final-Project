@@ -7,13 +7,7 @@
             <li v-for="error in form.errors" :key="error">{{ error }}</li>
           </ul>
         </div>
-        <b-form
-          @submit.prevent="onSubmit"
-          @reset="onReset"
-          ref="form"
-          method="POST"
-          action="http://doristef.me/semester4/FinalProject/server/contact-success.php"
-        >
+        <b-form @submit.prevent="onSubmit" @reset="onReset">
           <b-form-group
             id="input-group-1"
             label="Email address:"
@@ -36,7 +30,7 @@
             label-for="clientName"
           >
             <b-form-input
-              v-model="form.name"
+              v-model="form.clientName"
               required
               placeholder="Enter name"
               name="clientName"
@@ -67,8 +61,11 @@
 </template>
 
 <script>
-/* Regex from http://emailregex.com/ */
+import axios from "axios";
+const postUrl =
+  "http://doristef.me/semester4/FinalProject/server/contact-success.php";
 
+/* Regex from http://emailregex.com/ */
 const emailRegex = RegExp(
   // eslint-disable-next-line
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}.[0-9]{1,3}\.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -84,21 +81,42 @@ export default {
     return {
       form: {
         email: null,
-        name: null,
+        clientName: null,
         message: null,
         errors: []
       }
     };
   },
   methods: {
+    // FORM DATA
+    formData: data => {
+      const form = new FormData();
+      for (const key in data) {
+        form.append(key, data[key]);
+      }
+      return form;
+    }, // formData END
+    // POST FORM
+    postForm: function() {
+      let data = this.formData(this.form);
+      axios
+        .post(postUrl, data)
+        .catch(e => {
+          this.form.errors.push(e);
+        })
+        .finally(() => {
+          return this.$router.push("/thankyou/");
+        });
+    }, // postForm END
+    // ON SUBMIT
     onSubmit() {
       if (
-        !nameRegex.test(this.form.name) ||
+        !nameRegex.test(this.form.clientName) ||
         !emailRegex.test(this.form.email) ||
         this.form.message.length < 20
       ) {
         this.form.errors = [];
-        if (!nameRegex.test(this.form.name)) {
+        if (!nameRegex.test(this.form.clientName)) {
           this.form.errors.push("Invalid characters in name.");
         }
         if (this.form.email !== null && !emailRegex.test(this.form.email)) {
@@ -109,15 +127,16 @@ export default {
         }
       } else {
         this.form.errors = [];
-        return this.$refs.form.submit();
+        return this.postForm();
       }
-    },
+    }, // onSubmit END
+    // ON RESET
     onReset() {
       // Reset our form values
       this.form.email = "";
-      this.form.name = "";
+      this.form.clientName = "";
       this.form.message = "";
-    }
-  }
+    } // onReset END
+  } // methods END
 };
 </script>

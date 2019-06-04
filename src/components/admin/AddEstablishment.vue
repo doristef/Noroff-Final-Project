@@ -179,7 +179,7 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import axios from "axios";
-const postOptions =
+const postUrl =
   "http://doristef.me/semester4/FinalProject/server/add-establishments-success.php";
 
 /* Regex from http://emailregex.com/ */
@@ -215,21 +215,19 @@ export default {
     }
   },
   methods: {
+    // FORM DATA
     formData: data => {
       const form = new FormData();
       for (const key in data) {
         form.append(key, data[key]);
       }
       return form;
-    },
+    }, // formData END
     // POST FORM
     postForm: function() {
       let data = this.formData(this.form);
       axios
-        .post(postOptions, data)
-        .then(({ data }) => {
-          this.form.errors.push(data);
-        })
+        .post(postUrl, data)
         .catch(e => {
           this.form.errors.push(e);
         })
@@ -275,7 +273,6 @@ export default {
         }
       } else {
         this.form.errors = [];
-
         return this.postForm();
       }
     }, // onSubmit END

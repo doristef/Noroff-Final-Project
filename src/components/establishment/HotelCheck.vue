@@ -25,13 +25,7 @@
             <li v-for="error in form.errors" :key="error">{{ error }}</li>
           </ul>
         </div>
-        <b-form
-          ref="form"
-          @submit.prevent="onSubmit"
-          @reset="onReset"
-          method="POST"
-          action="http://doristef.me/semester4/FinalProject/server/enquiry-success.php"
-        >
+        <b-form @submit.prevent="onSubmit" @reset="onReset">
           <b-form-group
             id="email"
             label="Email address:"
@@ -56,7 +50,7 @@
             <b-form-input
               name="clientName"
               id="clientName"
-              v-model="form.name"
+              v-model="form.clientName"
               required
               placeholder="Enter name"
             ></b-form-input>
@@ -153,6 +147,10 @@
 <script>
 import HotelDatePicker from "@northwalker/vue-hotel-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import axios from "axios";
+const postUrl =
+  "http://doristef.me/semester4/FinalProject/server/enquiry-success.php";
+
 /* Regex from http://emailregex.com/ */
 const emailRegex = RegExp(
   // eslint-disable-next-line
@@ -169,7 +167,7 @@ export default {
   data() {
     return {
       form: {
-        name: "",
+        clientName: "",
         email: "",
         checkin: "",
         checkout: "",
@@ -184,23 +182,46 @@ export default {
     }
   },
   methods: {
+    // FORM DATA
+    formData: data => {
+      const form = new FormData();
+      for (const key in data) {
+        form.append(key, data[key]);
+      }
+      return form;
+    }, // formData END
+    // POST FORM
+    postForm: function() {
+      let data = this.formData(this.form);
+      axios
+        .post(postUrl, data)
+        .catch(e => {
+          this.form.errors.push(e);
+        })
+        .finally(() => {
+          return this.$router.push("/thankyou/");
+        });
+    }, // postForm END
+    // APPLY DATE
     applyDate(result) {
       this.form.checkin = result.start;
       this.form.checkout = result.end;
-    },
+    }, // applyDate END
+    // CANCEL DATE
     cancelDate() {
       this.form.checkin = "";
       this.form.checkout = "";
-    },
+    }, // cancelDate END
+    // ON SUBMIT
     onSubmit() {
       if (
-        !nameRegex.test(this.form.name) ||
+        !nameRegex.test(this.form.clientName) ||
         !emailRegex.test(this.form.email) ||
         this.form.checkin === "" ||
         this.form.checkout === ""
       ) {
         this.form.errors = [];
-        if (!nameRegex.test(this.form.name)) {
+        if (!nameRegex.test(this.form.clientName)) {
           this.form.errors.push("Invalid characters in name.");
         }
         if (this.form.email !== null && !emailRegex.test(this.form.email)) {
@@ -211,16 +232,17 @@ export default {
         }
       } else {
         this.form.errors = [];
-        return this.$refs.form.submit();
+        return this.postForm();
       }
-    },
+    }, // onSubmit END
+    // ON RESET
     onReset() {
       // Reset our form values
       this.form.email = "";
-      this.form.name = "";
+      this.form.clientName = "";
       this.form.checkin = "";
       this.form.checkout = "";
-    }
-  }
+    } // onReset END
+  } // method END
 };
 </script>
