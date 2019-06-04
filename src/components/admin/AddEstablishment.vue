@@ -1,42 +1,20 @@
 <template>
   <b-container>
-    <b-row align-h="center">
-      <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
-        <h1 class="[ card-hotel-header ][ mt-5 mb-4 ]">
-          Add a new Establishment
-        </h1>
+    <b-row align-h="center" class="[ admin-splitter ][ mb-2 ]">
+      <b-col align-self="center" class="[ mt-2 mb-1 ][ text-center ]">
+        <h3 class="[ admin-splitter-heading ]">
+          Add a New Establishment
+        </h3>
       </b-col>
     </b-row>
     <b-row class="[ mb-5 pb150 ]" align-h="center">
       <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
         <div v-if="form.errors.length">
           <ul>
-            <li v-for="error in form.errors" :key="error">{{ error }}</li>
+            <li v-for="(error, i) in form.errors" :key="i">{{ error }}</li>
           </ul>
         </div>
-        <!------
-      establishmentName Sunset Beach
-      establishmentEmail  info@sunsetbeach.com
-
-      imageUrl  https:\/\/images.unsplash.com\/photo-1439130490301-25e322d88054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80
-
-      price 85
-      establishmentId 18
-      googleLat 60.393388
-      googleLong  5.228720
-      description  Get ready for some amazing sunsets as you sip a cocktail and watch dolphins play in the harbour below.",
-      selfCatering  true
-      id
-
------>
-
-        <b-form
-          ref="form"
-          @submit.prevent="onSubmit"
-          @reset="onReset"
-          method="POST"
-          action="http://doristef.me/semester4/FinalProject/server/add-establishments-success.php"
-        >
+        <b-form @submit.prevent="onSubmit" @reset="onReset">
           <b-form-group
             label="Establishment Name:"
             label-for="establishmentName"
@@ -66,11 +44,11 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group label="Image URL:" label-for="establishmentImage">
+          <b-form-group label="Image URL:" label-for="imageUrl">
             <b-form-input
               name="imageUrl"
               id="imageUrl"
-              v-model="form.establishmentImage"
+              v-model="form.imageUrl"
               type="url"
               required
               placeholder="Enter URL to image"
@@ -164,16 +142,16 @@
             ></b-form-textarea>
           </b-form-group>
 
-          <b-form-group label="Self Catering:" label-for="selfcatering">
+          <b-form-group label="Self Catering:" label-for="selfCatering">
             <b-form-radio
-              v-model="form.selfcatering"
+              v-model="form.selfCatering"
               name="selfCatering"
               id="true"
               :value="true"
               >Yes</b-form-radio
             >
             <b-form-radio
-              v-model="form.selfcatering"
+              v-model="form.selfCatering"
               name="selfCatering"
               id="false"
               :value="false"
@@ -183,8 +161,7 @@
           </b-form-group>
 
           <b-form-group label="ID:" label-for="id">
-            <input type="hidden" name="id" :value="nextId.toString()" />
-            <div class="[ admin-bold ]">{{ nextId.toString() }}</div>
+            <div class="[ admin-bold ]">{{ (form.id = nextId) }}</div>
           </b-form-group>
 
           <b-button type="submit" variant="primary"
@@ -201,6 +178,10 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import axios from "axios";
+const postOptions =
+  "http://doristef.me/semester4/FinalProject/server/add-establishments-success.php";
+
 /* Regex from http://emailregex.com/ */
 const emailRegex = RegExp(
   // eslint-disable-next-line
@@ -214,25 +195,49 @@ export default {
   data() {
     return {
       form: {
+        id: null,
         establishmentName: "",
         establishmentEmail: "",
-        establishmentImage: "",
+        imageUrl: "",
         price: null,
         maxGuests: null,
         googleLat: null,
         googleLong: null,
         description: "",
-        selfcatering: false,
+        selfCatering: false,
         errors: []
       }
     };
   },
   computed: {
     nextId() {
-      return this.establishments.length + 1;
+      return (this.establishments.length + 1).toString();
     }
   },
   methods: {
+    formData: data => {
+      const form = new FormData();
+      for (const key in data) {
+        form.append(key, data[key]);
+      }
+      return form;
+    },
+    // POST FORM
+    postForm: function() {
+      let data = this.formData(this.form);
+      axios
+        .post(postOptions, data)
+        .then(({ data }) => {
+          this.form.errors.push(data);
+        })
+        .catch(e => {
+          this.form.errors.push(e);
+        })
+        .finally(() => {
+          return this.$router.push("/admin/establishmentadded/" + this.form.id);
+        });
+    }, // postForm END
+    // ON SUBMIT
     onSubmit() {
       if (
         !emailRegex.test(this.form.establishmentEmail) ||
@@ -240,7 +245,7 @@ export default {
         isNaN(this.form.price) ||
         isNaN(this.form.googleLat) ||
         isNaN(this.form.googleLong) ||
-        this.form.establishmentImage === "" ||
+        this.form.imageUrl === "" ||
         this.form.establishmentName === ""
       ) {
         this.form.errors = [];
@@ -253,7 +258,7 @@ export default {
         ) {
           this.form.errors.push("Incorrect format of email.");
         }
-        if (this.form.establishmentImage === "") {
+        if (this.form.imageUrl === "") {
           this.form.errors.push("Image Url must be filled out.");
         }
         if (isNaN(this.form.price)) {
@@ -270,21 +275,23 @@ export default {
         }
       } else {
         this.form.errors = [];
-        return this.$refs.form.submit();
+
+        return this.postForm();
       }
-    },
+    }, // onSubmit END
+    // ON RESET
     onReset() {
       // Reset our form values
       this.form.establishmentName = "";
       this.form.establishmentEmail = "";
-      this.form.establishmentImage = "";
+      this.form.imageUrl = "";
       this.form.price = null;
       this.form.maxGuests = null;
       this.form.googleLat = null;
       this.form.googleLong = null;
       this.form.description = "";
-      this.form.selfcatering = false;
-    }
+      this.form.selfCatering = false;
+    } // onReset END
   }
 };
 </script>
