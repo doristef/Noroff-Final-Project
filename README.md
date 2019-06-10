@@ -7,14 +7,7 @@
 
 Please make sure you have git installed along with node, and is up to date.
 
-Clone the project to your machine, 
-
-CD into the folder and run " npm i " to install the dependecies.
-
-Run the project by running " npm run serve ". 
-
-The project can now be opened in your browser at localhost:8080/
-
+Clone the project to your machine, cd into the folder and use "npm i" to install dependecies.
 
 ## Usage
 ```
@@ -23,16 +16,17 @@ The project can now be opened in your browser at localhost:8080/
  
  2. cd Noroff-Final-Project
  
- 3. npm install
+ 3. npm i
  
  4. npm run serve
  
  5. Open brower to localhost:8080/
  
+ Now the project is running on localhost!
 ```
 ## Server Side
 ```
-This project makes use of PHP.
+This project makes use of PHP and JSON.
 PHP code is available at https://github.com/Noroff-Education/project-exam-2
 ```
 
