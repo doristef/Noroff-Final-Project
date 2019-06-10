@@ -46,18 +46,6 @@
               />
             </a>
           </b-dropdown-item>
-          <b-dropdown-item @click="changeSortKey('clientName')">
-            <a href="#" id="clientName"
-              >Client Name
-              <font-awesome-icon
-                icon="check"
-                size="1x"
-                class="[ mr-2 ]"
-                v-if="sortKey === 'clientName'"
-              />
-            </a>
-          </b-dropdown-item>
-
           <b-dropdown-divider
             v-if="sortKey !== 'newest' && sortKey !== 'oldest'"
           ></b-dropdown-divider>
