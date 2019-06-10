@@ -40,18 +40,20 @@ npm run test
 npm run lint
 ```
 
-### Server Side
-This project makes use of PHP and JSON.
-PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
-
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+---
+
+### Server Side
+This project makes use of PHP and JSON.
+PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
 
 Live
 ---
 
 A live version is available at http://doristef.me/semester4/FinalProject/
 
+---
 
 ### Thanks and have fun!
