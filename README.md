@@ -2,7 +2,7 @@
 
 =============================================================================
 
-##Installation
+## Installation
 ---
 
 Please make sure you have git installed along with node, and is up to date.
@@ -41,15 +41,14 @@ npm run lint
 ```
 
 ### Customize configuration
----
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Server Side
+## Server Side
 ---
 This project makes use of PHP and JSON.
 PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
 
-Live
+## Live
 ---
 
 A live version is available at http://doristef.me/semester4/FinalProject/
