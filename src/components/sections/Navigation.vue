@@ -8,12 +8,12 @@
         exact-active-class="[ navigation-link-active ]"
         v-if="!authenticated"
       >
-        <span class="[ navigation-list-item ]" @click="navClick()">
+        <span class="[ navigation-list-item ][ mr-1 ]" @click="navClick()">
           Admin
         </span>
       </router-link>
       <div v-else class="[ navigation-link ]" @click="logOut()">
-        <span class="[ navigation-list-item ]" @click="navClick()">
+        <span class="[ navigation-list-item ][ mr-1 ]" @click="navClick()">
           Logout
         </span>
       </div>
@@ -21,7 +21,11 @@
     <!--- ADMIN NAVIGATION END! -->
 
     <div class="[ nav ]">
-      <div class="[ nav-brand ]" @click="clicked ? navClick() : ''">
+      <div
+        class="[ nav-brand ]"
+        @click="clicked ? navClick() : ''"
+        v-if="!authenticated"
+      >
         <router-link to="/" class="[ nav-brand-text ]">
           Holidaze
         </router-link>

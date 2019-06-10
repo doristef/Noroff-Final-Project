@@ -2,10 +2,9 @@
   <b-container fluid>
     <!--- Holidaze --->
     <b-row class="[ my-5 ]" align-h="center">
-      <b-col col cols="12" md="4">
+      <b-col col cols="12" lg="5" xl="4">
         <b-container>
           <h1 class="[ frontpage-h1 ]">Holidaze</h1>
-
           <p>
             A local tourism agency located in Bergen, aiming to help visitors of
             Norway to find great accommodation.
@@ -17,7 +16,9 @@
         align-self="center"
         col
         cols="12"
-        md="3"
+        md="10"
+        lg="4"
+        xl="3"
         class="[ icon-container ]"
       >
         <b-container>

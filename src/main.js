@@ -22,9 +22,10 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faUserAlt,
   faDollarSign,
-  faUtensils
+  faUtensils,
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faUserAlt, faDollarSign, faUtensils);
+library.add(faUserAlt, faDollarSign, faUtensils, faCheck);
 
 new Vue({
   Router,

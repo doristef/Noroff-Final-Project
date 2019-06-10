@@ -25,7 +25,7 @@
               autocomplete="off"
               id="search"
               type="text"
-              size="lg"
+              :size="size"
               :placeholder="placeholder"
               v-model="search"
               @input="onChange"
@@ -76,7 +76,8 @@ export default {
     "button",
     "predict",
     "description",
-    "placeholder"
+    "placeholder",
+    "size"
   ],
   data() {
     return {

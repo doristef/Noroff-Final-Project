@@ -3,10 +3,11 @@
     <Search
       rowClass="vh100"
       :establishments="this.establishments"
-      :button="true"
+      :button="false"
       :predict="true"
       :description="false"
-      placeholder="Search"
+      size="lg"
+      placeholder="Search, f.ex. Sunset Beach"
     /> </b-container
   ><!-- container -->
 </template>

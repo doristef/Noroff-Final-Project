@@ -7,7 +7,7 @@
     padding: 0;
     height: $navHeight;
     /* nav on Large Screen */
-    @media only screen and (min-device-width: $medScreen){
+    @media only screen and (min-device-width: $smallScreen){
         display: flex !important;
     }
 
@@ -19,12 +19,12 @@
         transform: translate3d(0, 0, 0);
         @include transition(transform 0.45s cubic-bezier(0.77,0.2,0.05,1.0));
 
-        @media only screen and (min-device-width: $medScreen){
+
             &-hide {
                 transform: translate3d(0, -90%, 0);
                 @include transition(transform 0.45s cubic-bezier(0.77,0.2,0.05,1.0));
             }
-        }
+        
         /* /hide/show navigation bar */
         z-index: 99 !important;
         position: fixed; // Stuck at top!
@@ -39,12 +39,12 @@
         position: relative;
         margin: 0 0 0 1rem;
         padding: 0 1rem;
-        border-radius: 0.25rem;
         height: $navHeight;
+        border-radius: 0.25rem;
         line-height: $navHeight;
         cursor: pointer;
         /* nav-Brand on Small Screen */
-            @media only screen and (max-device-width: $medScreen){
+            @media only screen and (max-device-width: $smallScreen){
                 display: inline-block;
             }
 
@@ -67,14 +67,14 @@
     &-admin {
 
         &-big {
-            @media only screen and (max-device-width: $medScreen){
+            @media only screen and (max-device-width: $smallScreen){
                 @include opacity(0);
                 display: none;
             }
             float: right;
         }
         &-min {
-            @media only screen and (min-device-width: $medScreen){
+            @media only screen and (min-device-width: $smallScreen){
                 @include opacity(0);
                 display: none;
             }
@@ -94,7 +94,7 @@
     &-hamburger {
 
 /* HIDE ON DESKTOP / TABLET */
-        @media only screen and (min-device-width: $medScreen){
+        @media only screen and (min-device-width: $smallScreen){
             @include opacity(0);
             display: none;
         }
@@ -159,7 +159,7 @@
 .navigation {
 
 /* DESKTOP / TABLET */
-    @media only screen and (min-device-width: $medScreen){
+    @media only screen and (min-device-width: $smallScreen){
         margin: 0;
         padding: 0;
 
@@ -174,11 +174,13 @@
         margin: 0;
         list-style: none;
 
-        @media only screen and (min-device-width: $medScreen){
+        @media only screen and (min-device-width: $smallScreen){
 
             &-item {
                 position: relative;
-                margin: 0 0 0 3rem;
+                @media only screen and (min-device-width: $medScreen){
+                    margin: 0 0 0 3rem;
+                }
                 padding: 0 10px;
                 display: inline-block;
                 line-height: $navHeight !important;
@@ -218,7 +220,7 @@
                 content: '';
                 background-color: $quiteWhite !important;
                 /* Small Screen */
-                @media only screen and (max-device-width: $medScreen){
+                @media only screen and (max-device-width: $smallScreen){
                     width: 92%;
                     left: 4%;
                     bottom: 5px;
@@ -231,7 +233,7 @@
 
     
 /* HIDDEN NAV ON MOBILE */
-    @media only screen and (max-device-width: $medScreen){
+    @media only screen and (max-device-width: $smallScreen){
         background-color: $gray;
         border-left: 2px solid lighten($gray, 10%);
         margin: 0;

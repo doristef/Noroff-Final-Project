@@ -11,11 +11,81 @@
       </b-col>
     </b-row>
     <b-row align-h="center">
+      <b-col align-self="center" class="[ my-1 ][ text-center ]">
+        <b-dropdown text="Sort By" variant="secondary">
+          <b-dropdown-item @click="changeSortKey('oldest')">
+            <a href="#" id="oldest"
+              >Oldest First
+              <font-awesome-icon
+                icon="check"
+                size="1x"
+                class="[ mr-2 ]"
+                v-if="sortKey === 'oldest'"
+              />
+            </a>
+          </b-dropdown-item>
+          <b-dropdown-item @click="changeSortKey('newest')">
+            <a href="#" id="newest"
+              >Newest First
+              <font-awesome-icon
+                icon="check"
+                size="1x"
+                class="[ mr-2 ]"
+                v-if="sortKey === 'newest'"
+              />
+            </a>
+          </b-dropdown-item>
+          <b-dropdown-item @click="changeSortKey('clientName')">
+            <a href="#" id="clientName"
+              >Client Name
+              <font-awesome-icon
+                icon="check"
+                size="1x"
+                class="[ mr-2 ]"
+                v-if="sortKey === 'clientName'"
+              />
+            </a>
+          </b-dropdown-item>
+          <b-dropdown-divider
+            v-if="sortKey !== 'newest' && sortKey !== 'oldest'"
+          ></b-dropdown-divider>
+          <b-dropdown-item
+            @click="changeSortDir('asc')"
+            v-if="sortKey !== 'newest' && sortKey !== 'oldest'"
+          >
+            <a href="#" id="asc"
+              >Asc
+              <font-awesome-icon
+                icon="check"
+                size="1x"
+                class="[ mr-2 ]"
+                v-if="sortDir === 'asc'"
+              />
+            </a>
+          </b-dropdown-item>
+          <b-dropdown-item
+            @click="changeSortDir('desc')"
+            v-if="sortKey !== 'newest' && sortKey !== 'oldest'"
+          >
+            <a href="#" id="desc"
+              >Desc
+              <font-awesome-icon
+                icon="check"
+                size="1x"
+                class="[ mr-2 ]"
+                v-if="sortDir === 'desc'"
+              />
+            </a>
+          </b-dropdown-item>
+        </b-dropdown>
+      </b-col>
+    </b-row>
+    <b-row align-h="center">
       <div v-if="loading"><h1>Loading...</h1></div>
       <!--- CARDS --->
 
       <b-card
-        v-for="(item, i) in messages"
+        v-for="(item, i) in sortBy"
         :key="i"
         tag="article"
         class="[ card-hotel ][ m-4 ]"
@@ -56,6 +126,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 /* Axios and apiUrl */
 import axios from "axios";
 const corsURL = ""; // Needed for Unblocking Cross-Origin request - https://cors-anywhere.herokuapp.com/
@@ -68,16 +139,45 @@ const apiConfig = {
 
 export default {
   name: "messages",
+  components: { FontAwesomeIcon },
   data() {
     return {
       loading: true,
       /* messages */
       messages: [],
-      errors: []
+      errors: [],
+      sortKey: "newest",
+      sortDir: "asc"
     };
   },
-
+  computed: {
+    // SortBy for Messages
+    sortBy: function() {
+      if (this.sortKey === "newest") {
+        return this.messages.slice().reverse();
+      } else if (this.sortKey === "oldest") {
+        return this.messages;
+      } else {
+        // eslint-disable-next-line
+        return _.orderBy(
+          this.messages,
+          function(item) {
+            return item[this.sortKey].toLowerCase();
+          }.bind(this),
+          this.sortDir
+        );
+      }
+    }
+  },
   methods: {
+    // Change Sort Direction
+    changeSortDir: function(dir) {
+      return (this.sortDir = dir);
+    },
+    // Change Sort Key
+    changeSortKey: function(key) {
+      return (this.sortKey = key);
+    },
     // API CALL
     apiCall: function() {
       axios
