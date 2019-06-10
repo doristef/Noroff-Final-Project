@@ -21,9 +21,9 @@ The project can now be opened in your browser at localhost:8080/
 
  1. git clone https://github.com/doristef/Noroff-Final-Project
  
- 2. cd Noroff-Noroff-FinalCA
+ 2. cd Noroff-Final-Project
  
- 3. npm i
+ 3. npm install
  
  4. npm run serve
  
