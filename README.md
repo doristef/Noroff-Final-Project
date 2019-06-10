@@ -19,7 +19,7 @@ The project can now be opened in your browser at localhost:8080/
 ## Usage
 ```
 
- 1. git clone https://github.com/doristef/Noroff-FinalProject
+ 1. git clone https://github.com/doristef/Noroff-Final-Project
  
  2. cd Noroff-Noroff-FinalCA
  
