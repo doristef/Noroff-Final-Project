@@ -1,9 +1,8 @@
 # HOLIDAZE - HOTEL BOOKING SITE
 
-=============================================================================
+---
 
 ## Installation
----
 
 Please make sure you have git installed along with node, and is up to date.
 
@@ -34,6 +33,7 @@ npm run build
 ```
 npm run test
 ```
+
 
 ### Lints and fixes files
 ```
