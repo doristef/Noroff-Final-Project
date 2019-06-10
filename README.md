@@ -24,12 +24,6 @@ Clone the project to your machine, cd into the folder and use "npm i" to install
  
  Now the project is running on localhost!
 ```
-## Server Side
-```
-This project makes use of PHP and JSON.
-PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
-
-```
 
 ### Compiles and minifies for production
 ```
@@ -45,6 +39,10 @@ npm run test
 ```
 npm run lint
 ```
+
+### Server Side
+This project makes use of PHP and JSON.
+PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
