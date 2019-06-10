@@ -34,6 +34,12 @@
           >
             Nothing
           </h4>
+          <h4
+            class="[ d-inline-block ][ card-text-bold ][ ml-3 ]"
+            v-else-if="this.search === ''"
+          >
+            {{ this.$route.params.search }}
+          </h4>
           <h4 class="[ d-inline-block ][ card-text-bold ][ ml-3 ]" v-else>
             {{ this.search }}
           </h4>
@@ -41,7 +47,7 @@
       </b-col>
     </b-row>
     <b-row align-h="center">
-      <b-col cols="12" md="4">
+      <b-col cols="12" md="4" class="[ mb-3 ]">
         <!--- CARDS --->
         <router-link
           v-for="establishment in filteredSearch"
@@ -92,6 +98,7 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Search from "./../sections/Search.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "establishmentSearch",
@@ -99,20 +106,26 @@ export default {
   props: ["establishments"],
   data() {
     return {
-      search: this.$route.params.search
+      searchRoute: this.$route.params.search
     };
   },
   computed: {
     filteredSearch() {
+      var search;
+      if (this.search === "") {
+        search = this.searchRoute;
+      } else {
+        search = this.search;
+      }
       return this.establishments.filter(item => {
         return (
-          item.establishmentName
-            .toLowerCase()
-            .match(this.search.toLowerCase()) ||
+          item.establishmentName.toLowerCase().match(search.toLowerCase()) ||
           parseInt(item.price) <= this.search
         );
       });
-    }
+    },
+    // MAPSTATE
+    ...mapState(["search"])
   }
 };
 </script>
