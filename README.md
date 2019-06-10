@@ -27,7 +27,8 @@ Clone the project to your machine, cd into the folder and use "npm i" to install
 ## Server Side
 ```
 This project makes use of PHP and JSON.
-PHP code is available at https://github.com/Noroff-Education/project-exam-2
+PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
+
 ```
 
 ### Compiles and minifies for production
