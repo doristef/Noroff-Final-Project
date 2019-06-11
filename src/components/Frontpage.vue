@@ -17,8 +17,8 @@
         col
         cols="12"
         md="10"
-        lg="4"
-        xl="3"
+        lg="5"
+        xl="4"
         class="[ icon-container ]"
       >
         <b-container>
