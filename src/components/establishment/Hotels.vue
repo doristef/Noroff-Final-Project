@@ -41,7 +41,7 @@
 
           <b-dropdown-item @click="changeSortDir('asc')">
             <a href="#" id="asc"
-              >Asc
+              >Ascending
               <font-awesome-icon
                 icon="check"
                 size="1x"
@@ -52,7 +52,7 @@
           </b-dropdown-item>
           <b-dropdown-item @click="changeSortDir('desc')">
             <a href="#" id="desc"
-              >Desc
+              >Descending
               <font-awesome-icon
                 icon="check"
                 size="1x"

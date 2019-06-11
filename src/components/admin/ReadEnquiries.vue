@@ -55,7 +55,7 @@
             v-if="sortKey !== 'newest' && sortKey !== 'oldest'"
           >
             <a href="#" id="asc"
-              >Asc
+              >Ascending
               <font-awesome-icon
                 icon="check"
                 size="1x"
@@ -69,7 +69,7 @@
             v-if="sortKey !== 'newest' && sortKey !== 'oldest'"
           >
             <a href="#" id="desc"
-              >Desc
+              >Descending
               <font-awesome-icon
                 icon="check"
                 size="1x"
