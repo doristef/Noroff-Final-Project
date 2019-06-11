@@ -56,7 +56,9 @@
             font-family: 'Cookie', cursive !important;
             color: $quiteWhite !important;
             font-size: 3rem !important;
-
+            @media only screen and (min-device-width: $smallScreen) and (max-device-width: $medScreen){
+                font-size: 2rem !important;
+            }
             &:hover {
                 text-decoration: none !important;
             }
@@ -179,7 +181,7 @@
             &-item {
                 position: relative;
                 @media only screen and (min-device-width: $medScreen){
-                    margin: 0 0 0 3rem;
+                    margin: 0 0 0 1.5rem;
                 }
                 padding: 0 10px;
                 display: inline-block;
@@ -200,7 +202,10 @@
 /* navigation-link */
     &-link {
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        @media only screen and (min-device-width: $medScreen){
+            font-size: 1.2rem; 
+        }
         color: $quiteWhite !important;
         position: relative;
         cursor: pointer;
@@ -209,7 +214,6 @@
             text-decoration: none !important;
             color: lighten($quiteWhite, 10%) !important;
         } // -link:hover
-
         &-active {
             & ::after {
                 position: absolute;

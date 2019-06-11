@@ -34,3 +34,9 @@
 .pb150 {
     padding-bottom: 150px;
 }
+.small-screen-only {
+    display: none;
+    @media only screen and (max-device-width: $smallScreen){
+        display: block;
+    }
+}

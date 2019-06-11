@@ -21,11 +21,7 @@
     <!--- ADMIN NAVIGATION END! -->
 
     <div class="[ nav ]">
-      <div
-        class="[ nav-brand ]"
-        @click="clicked ? navClick() : ''"
-        v-if="!authenticated"
-      >
+      <div class="[ nav-brand ]" @click="clicked ? navClick() : ''">
         <router-link to="/" class="[ nav-brand-text ]">
           Holidaze
         </router-link>
@@ -56,6 +52,15 @@
         >
           <ul class="[ navigation-list ]" v-if="!authenticated">
             <router-link
+              to="/"
+              class="[ navigation-link ][ small-screen-only ]"
+              exact-active-class="[ navigation-link-active ]"
+            >
+              <li class="[ navigation-list-item ]" @click="navClick()">
+                Home
+              </li>
+            </router-link>
+            <router-link
               to="/accomodations"
               class="[ navigation-link ]"
               active-class="[ navigation-link-active ]"
@@ -78,6 +83,15 @@
 
           <!--- ADMIN NAVIGATION -->
           <ul class="[ navigation-list ]" v-else>
+            <router-link
+              to="/"
+              class="[ navigation-link ][ small-screen-only ]"
+              exact-active-class="[ navigation-link-active ]"
+            >
+              <li class="[ navigation-list-item ]" @click="navClick()">
+                Holidaze
+              </li>
+            </router-link>
             <router-link
               to="/admin/enquiries"
               class="[ navigation-link ]"
@@ -113,7 +127,7 @@
               exact-active-class="[ navigation-link-active ]"
             >
               <li class="[ navigation-list-item ]" @click="navClick()">
-                See Establishments
+                Establishments
               </li>
             </router-link>
           </ul>
