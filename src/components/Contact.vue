@@ -2,7 +2,7 @@
   <b-container class="[ mt-2 ][ vh100 ]">
     <b-row class="[ pt-4 ]">
       <b-col align-self="center" class="[ m-2 ]">
-        <div v-if="form.errors.length">
+        <div v-if="form.errors.length" class="[ alert alert-danger ]">
           <ul>
             <li v-for="error in form.errors" :key="error">{{ error }}</li>
           </ul>
@@ -21,6 +21,7 @@
               placeholder="Enter email"
               name="email"
               id="email"
+              :state="form.errorEmail"
             ></b-form-input>
           </b-form-group>
 
@@ -35,6 +36,7 @@
               placeholder="Enter name"
               name="clientName"
               id="clientName"
+              :state="form.errorName"
             ></b-form-input>
           </b-form-group>
 
@@ -46,7 +48,7 @@
               v-model="form.message"
               placeholder="Enter something..."
               rows="3"
-              max-rows="6"
+              :state="form.errorMessage"
             ></b-form-textarea>
           </b-form-group>
 
@@ -83,7 +85,10 @@ export default {
         email: null,
         clientName: null,
         message: null,
-        errors: []
+        errors: [],
+        errorName: null,
+        errorEmail: null,
+        errorMessage: null
       }
     };
   },
@@ -115,27 +120,40 @@ export default {
         !emailRegex.test(this.form.email) ||
         this.form.message.length < 20
       ) {
-        this.form.errors = [];
+        this.errorReset(true);
         if (!nameRegex.test(this.form.clientName)) {
           this.form.errors.push("Invalid characters in name.");
+          this.form.errorName = false;
         }
         if (this.form.email !== null && !emailRegex.test(this.form.email)) {
           this.form.errors.push("Incorrect format of email.");
+          this.form.errorEmail = false;
         }
         if (this.form.message.length < 20) {
           this.form.errors.push("Message need at least 20 characters.");
+          this.form.errorMessage = false;
         }
       } else {
-        this.form.errors = [];
+        this.errorReset();
         return this.postForm();
       }
     }, // onSubmit END
+    // RESET ERRORS
+    errorReset(value = null) {
+      return (
+        (this.form.errors = []),
+        (this.form.errorName = value),
+        (this.form.errorEmail = value),
+        (this.form.errorMessage = value)
+      );
+    }, // errorReset END
     // ON RESET
     onReset() {
       // Reset our form values
       this.form.email = "";
       this.form.clientName = "";
       this.form.message = "";
+      this.errorReset();
     } // onReset END
   } // methods END
 };

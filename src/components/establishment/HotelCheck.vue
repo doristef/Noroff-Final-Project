@@ -20,7 +20,7 @@
     </b-row>
     <b-row class="[ mb-5 ]" align-h="center">
       <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
-        <div v-if="form.errors.length">
+        <div v-if="form.errors.length" class="[ alert alert-danger ]">
           <ul>
             <li v-for="error in form.errors" :key="error">{{ error }}</li>
           </ul>
@@ -39,6 +39,7 @@
               type="email"
               required
               placeholder="Enter email"
+              :state="form.errorEmail"
             ></b-form-input>
           </b-form-group>
 
@@ -53,6 +54,7 @@
               v-model="form.clientName"
               required
               placeholder="Enter name"
+              :state="form.errorName"
             ></b-form-input>
           </b-form-group>
 
@@ -60,6 +62,7 @@
             id="input-group-3"
             label="Check In / Check Out:"
             label-for="input-3"
+            :state="form.errorCheckin"
           >
             <input type="hidden" name="checkin" :value="form.checkin" />
             <input type="hidden" name="checkout" :value="form.checkout" />
@@ -172,7 +175,9 @@ export default {
         checkin: "",
         checkout: "",
         establishment: "",
-        errors: []
+        errors: [],
+        errorName: null,
+        errorEmail: null
       }
     };
   },
@@ -220,21 +225,32 @@ export default {
         this.form.checkin === "" ||
         this.form.checkout === ""
       ) {
-        this.form.errors = [];
+        this.errorReset(true);
         if (!nameRegex.test(this.form.clientName)) {
           this.form.errors.push("Invalid characters in name.");
+          this.form.errorName = false;
         }
         if (this.form.email !== null && !emailRegex.test(this.form.email)) {
           this.form.errors.push("Incorrect format of email.");
+          this.form.errorEmail = false;
         }
         if (this.form.checkin === "" || this.form.checkout === "") {
           this.form.errors.push("Checkin / Checkout dates required.");
+          this.form.errorCheckin = false;
         }
       } else {
-        this.form.errors = [];
+        this.errorReset();
         return this.postForm();
       }
     }, // onSubmit END
+    // RESET ERRORS
+    errorReset(value = null) {
+      return (
+        (this.form.errors = []),
+        (this.form.errorName = value),
+        (this.form.errorEmail = value)
+      );
+    }, // errorReset END
     // ON RESET
     onReset() {
       // Reset our form values
@@ -242,6 +258,7 @@ export default {
       this.form.clientName = "";
       this.form.checkin = "";
       this.form.checkout = "";
+      this.errorReset();
     } // onReset END
   } // method END
 };
