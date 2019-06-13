@@ -2,12 +2,20 @@
   <b-container fluid>
     <!--- Holidaze --->
     <b-row class="[ my-5 ]" align-h="center">
-      <b-col col cols="12" lg="5" xl="4">
+      <b-col col cols="12" lg="5" xl="4" style="max-width: 650px;">
         <b-container>
           <h1 class="[ frontpage-h1 ]">Holidaze</h1>
           <p>
             A local tourism agency located in Bergen, aiming to help visitors of
             Norway to find great accommodation.
+          </p>
+          <p>
+            Holidaze was founded in 2015 by two locals in Bergen, Norway. Their
+            aim is to get more people to Norway and especially Bergen, and
+            experience beautiful nature along with outgoing friendly Norwegians.
+          </p>
+          <p>
+            We hope to see you soon!
           </p>
         </b-container>
       </b-col>
@@ -20,6 +28,7 @@
         lg="5"
         xl="4"
         class="[ icon-container ]"
+        style="max-width: 500px;"
       >
         <b-container>
           <b-row align-v="center">
