@@ -115,6 +115,7 @@ export default {
     }, // postForm END
     // ON SUBMIT
     onSubmit() {
+      /* Lets error check again, if HTML5 error check let something through we dont want! */
       if (
         !nameRegex.test(this.form.clientName) ||
         !emailRegex.test(this.form.email) ||

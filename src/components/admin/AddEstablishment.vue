@@ -9,7 +9,7 @@
     </b-row>
     <b-row class="[ mb-5 pb150 ]" align-h="center">
       <b-col cols="12" md="8" align-self="center" class="[ m-2 ]">
-        <div v-if="form.errors.length">
+        <div v-if="form.errors.length" class="[ alert alert-danger ]">
           <ul>
             <li v-for="(error, i) in form.errors" :key="i">{{ error }}</li>
           </ul>
@@ -26,6 +26,7 @@
               type="text"
               required
               placeholder="Name of Establishment"
+              :state="form.error.name"
             ></b-form-input>
           </b-form-group>
 
@@ -41,6 +42,7 @@
               type="email"
               required
               placeholder="Enter email"
+              :state="form.error.email"
             ></b-form-input>
           </b-form-group>
 
@@ -52,6 +54,7 @@
               type="url"
               required
               placeholder="Enter URL to image"
+              :state="form.error.image"
             ></b-form-input>
           </b-form-group>
 
@@ -73,6 +76,7 @@
                 required
                 step="0.01"
                 placeholder="Price"
+                :state="form.error.price"
               ></b-form-input>
             </b-input-group>
           </b-form-group>
@@ -94,6 +98,7 @@
                 required
                 placeholder="Guests"
                 style="max-width: 100px;"
+                :state="form.error.guests"
               ></b-form-input>
             </b-input-group>
           </b-form-group>
@@ -110,6 +115,7 @@
                 type="text"
                 required
                 placeholder="Latitude Degrees"
+                :state="form.error.lat"
               ></b-form-input>
             </b-input-group>
             <b-input-group
@@ -126,6 +132,7 @@
                 type="text"
                 required
                 placeholder="Longitude Degrees"
+                :state="form.error.long"
               ></b-form-input>
             </b-input-group>
           </b-form-group>
@@ -139,6 +146,7 @@
               type="text"
               placeholder="Enter Establishment Description"
               rows="4"
+              :state="form.error.description"
             ></b-form-textarea>
           </b-form-group>
 
@@ -205,7 +213,17 @@ export default {
         googleLong: null,
         description: "",
         selfCatering: false,
-        errors: []
+        errors: [],
+        error: {
+          name: null,
+          email: null,
+          image: null,
+          price: null,
+          lat: null,
+          long: null,
+          guests: null,
+          description: null
+        }
       }
     };
   },
@@ -237,6 +255,7 @@ export default {
     }, // postForm END
     // ON SUBMIT
     onSubmit() {
+      /* Lets error check again, if HTML5 error check let something through we dont want! */
       if (
         !emailRegex.test(this.form.establishmentEmail) ||
         isNaN(this.form.maxGuests) ||
@@ -244,38 +263,64 @@ export default {
         isNaN(this.form.googleLat) ||
         isNaN(this.form.googleLong) ||
         this.form.imageUrl === "" ||
-        this.form.establishmentName === ""
+        this.form.establishmentName === "" ||
+        this.form.description.length < 15
       ) {
-        this.form.errors = [];
+        this.errorReset(true);
         if (this.form.establishmentName === "") {
           this.form.errors.push("Named must be filled out.");
+          this.form.error.name = false;
         }
         if (
           this.form.email !== null &&
           !emailRegex.test(this.form.establishmentEmail)
         ) {
           this.form.errors.push("Incorrect format of email.");
+          this.form.error.email = false;
         }
         if (this.form.imageUrl === "") {
           this.form.errors.push("Image Url must be filled out.");
+          this.form.error.image = false;
         }
         if (isNaN(this.form.price)) {
           this.form.errors.push("Price must be a number.");
+          this.form.error.price = false;
         }
         if (isNaN(this.form.googleLat)) {
           this.form.errors.push("Latitude must be a number.");
+          this.form.error.lat = false;
         }
         if (isNaN(this.form.googleLong)) {
           this.form.errors.push("Longitude must be a number.");
+          this.form.error.long = false;
         }
         if (isNaN(this.form.maxGuests)) {
           this.form.errors.push("Maximum Guests must be a number.");
+          this.form.error.guests = false;
+        }
+        if (this.form.description.length < 15) {
+          this.form.errors.push("Description must be at least 15 characters.");
+          this.form.error.description = false;
         }
       } else {
-        this.form.errors = [];
+        this.errorReset();
         return this.postForm();
       }
     }, // onSubmit END
+    // RESET ERRORS
+    errorReset(value = null) {
+      return (
+        (this.form.errors = []),
+        (this.form.error.name = value),
+        (this.form.error.email = value),
+        (this.form.error.image = value),
+        (this.form.error.price = value),
+        (this.form.error.lat = value),
+        (this.form.error.long = value),
+        (this.form.error.guests = value),
+        (this.form.error.description = value)
+      );
+    }, // errorReset END
     // ON RESET
     onReset() {
       // Reset our form values
@@ -288,6 +333,7 @@ export default {
       this.form.googleLong = null;
       this.form.description = "";
       this.form.selfCatering = false;
+      this.errorReset();
     } // onReset END
   }
 };
