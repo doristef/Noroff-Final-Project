@@ -148,8 +148,8 @@
 import HotelDatePicker from "@northwalker/vue-hotel-datepicker";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import axios from "axios";
-const postUrl =
-  "http://doristef.me/semester4/FinalProject/server/enquiry-success.php";
+import { URL } from "./../../../server.config";
+const postUrl = URL + "enquiry-success.php";
 
 /* Regex from http://emailregex.com/ */
 const emailRegex = RegExp(

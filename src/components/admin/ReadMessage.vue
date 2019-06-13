@@ -87,8 +87,9 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 /* Axios and apiUrl */
 import axios from "axios";
-const corsURL = ""; // Needed for Unblocking Cross-Origin request - https://cors-anywhere.herokuapp.com/
-const apiURL = "http://doristef.me/semester4/FinalProject/server/contact.json"; // API to fetch from
+import { URL, corsURL } from "./../../../server.config";
+const apiURL = corsURL + URL + "contact.json"; // API to fetch from
+
 const apiConfig = {
   headers: { "Content-Type": "application/json" },
   responseType: "json",
@@ -125,7 +126,7 @@ export default {
     // API CALL
     apiCall: function() {
       axios
-        .get(corsURL + apiURL, apiConfig)
+        .get(apiURL, apiConfig)
         .then(({ data }) => {
           this.messages = data;
         })

@@ -179,8 +179,8 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import axios from "axios";
-const postUrl =
-  "http://doristef.me/semester4/FinalProject/server/add-establishments-success.php";
+import { URL } from "./../../../server.config";
+const postUrl = URL + "add-establishments-success.php";
 
 /* Regex from http://emailregex.com/ */
 const emailRegex = RegExp(

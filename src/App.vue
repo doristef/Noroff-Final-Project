@@ -11,12 +11,11 @@
 import Navigation from "./components/sections/Navigation.vue";
 import PageFooter from "./components/sections/Footer.vue";
 import router from "./router.js";
+import { URL, corsURL } from "./../server.config";
 
 /* FETCH All Establishments */
 import axios from "axios";
-const corsURL = ""; // Needed for Unblocking Cross-Origin request - https://cors-anywhere.herokuapp.com/
-const apiURL =
-  "http://doristef.me/semester4/FinalProject/server/establishments.json"; // API to fetch from
+const apiURL = corsURL + URL + "establishments.json"; // API to fetch from
 const apiConfig = {
   headers: { "Content-Type": "application/json" },
   responseType: "json",
@@ -52,7 +51,7 @@ export default {
     // API CALL
     apiCall: function() {
       axios
-        .get(corsURL + apiURL, apiConfig)
+        .get(apiURL, apiConfig)
         .then(({ data }) => {
           this.establishments = data;
         })
