@@ -92,6 +92,7 @@
                 Holidaze
               </li>
             </router-link>
+
             <router-link
               to="/admin/enquiries"
               class="[ navigation-link ]"
@@ -105,7 +106,7 @@
             <router-link
               to="/admin/messages"
               class="[ navigation-link ]"
-              exact-active-class="[ navigation-link-active ]"
+              active-class="[ navigation-link-active ]"
             >
               <li class="[ navigation-list-item ]" @click="navClick()">
                 Messages

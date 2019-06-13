@@ -225,9 +225,9 @@
                 background-color: $quiteWhite !important;
                 /* Small Screen */
                 @media only screen and (max-device-width: $smallScreen){
-                    width: 92%;
+                    width: 90%;
                     left: 4%;
-                    bottom: 5px;
+                    bottom: 8px;
                     background-color: $accentColor !important;
                 } // media
             } // -link-active::after
