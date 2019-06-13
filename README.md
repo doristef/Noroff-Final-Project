@@ -50,7 +50,7 @@ This project makes use of PHP and JSON.
 PHP code and JSON files are available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
 
 ```
-Add the files to your server and update -server.config.js- to your URL.
+Add the folder /server/ to your server and update -server.config.js- to the URL of the folder.
 ```
 
 ## Live
