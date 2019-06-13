@@ -66,7 +66,7 @@
               active-class="[ navigation-link-active ]"
             >
               <li class="[ navigation-list-item ]" @click="navClick()">
-                Accomodations
+                Establishments
               </li>
             </router-link>
 
