@@ -48,6 +48,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 This project makes use of PHP and JSON.
 PHP code is available at [Noroff - Project Exam 2](https://github.com/Noroff-Education/project-exam-2).
 
+```
+Add the files to your server and update -server.config.js- to your URL.
+```
+
 ## Live
 
 
