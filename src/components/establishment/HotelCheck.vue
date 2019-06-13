@@ -62,7 +62,6 @@
             id="input-group-3"
             label="Check In / Check Out:"
             label-for="input-3"
-            :state="form.errorCheckin"
           >
             <input type="hidden" name="checkin" :value="form.checkin" />
             <input type="hidden" name="checkout" :value="form.checkout" />
@@ -80,6 +79,9 @@
               minNights="1"
               format="DD-MM-YYYY"
             />
+            <span v-if="form.errorCheckin === false" class="[ text-danger ]">
+              Check in / out needed!
+            </span>
           </b-form-group>
 
           <b-button type="submit" variant="primary">Send Enquiry</b-button>
@@ -177,7 +179,8 @@ export default {
         establishment: "",
         errors: [],
         errorName: null,
-        errorEmail: null
+        errorEmail: null,
+        errorCheckin: null
       }
     };
   },
@@ -249,7 +252,8 @@ export default {
       return (
         (this.form.errors = []),
         (this.form.errorName = value),
-        (this.form.errorEmail = value)
+        (this.form.errorEmail = value),
+        (this.form.errorCheckin = value)
       );
     }, // errorReset END
     // ON RESET
