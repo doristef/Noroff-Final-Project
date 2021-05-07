@@ -7,7 +7,7 @@
           <div class="[ footer-icon  ]">Holidaze</div>
           <h1 class="[ footer-h1 ]">Holidaze</h1>
           <p class="[ footer-copyright ]">
-            &copy; Copyright 2019, Holidaze - Tourism Agency
+            &copy; Copyright 2021, Holidaze - Tourism Agency
           </p>
         </b-container>
       </b-col>

@@ -9,8 +9,9 @@ Vue.use(Router);
 
 /* Lodash */
 import VueLodash from "vue-lodash";
-const options = { name: "lodash" };
-Vue.use(VueLodash, options);
+import lodash from "lodash";
+
+Vue.use(VueLodash, { name: "custom", lodash: lodash });
 
 /* SASS - SCSS */
 import BootstrapVue from "bootstrap-vue";
